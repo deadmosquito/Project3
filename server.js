@@ -7,6 +7,7 @@ var db = require("./models");
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+console.log(process.env.NODE_ENV)
 
 if (process.env.NODE_ENV === 'production') {
   // Exprees will serve up production assets
