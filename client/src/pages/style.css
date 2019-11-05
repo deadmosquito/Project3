@@ -1,0 +1,19 @@
+.moreBlogsButton{
+    margin: 40px auto;
+}
+.moreBlogsButton a{
+    border: 1px solid black;
+    text-align: center;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+.moreBlogsButton a:hover{
+    background-color: black;
+    color:white;
+    text-decoration: none;
+}
+.divider{
+    box-shadow: 0px 3px 8px 3px;
+    border: 1px solid black;
+    background-color: black;
+}

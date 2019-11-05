@@ -1,0 +1,7 @@
+.bg-navBar{
+    background-color: black !important;
+}
+.bg-navBar a{
+    color: white !important;   
+    font-weight: bold;
+}
