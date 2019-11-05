@@ -2,15 +2,15 @@ const router = require("express").Router();
 const blogController = require("../../controllers/blogController");
 
 // Matches with "/api/books"
-router.route("/")
+/* router.route("/")
   .get(blogController.findAll)
-  .post(blogController.create);
+  .post(blogController.create); */
 
 // Matches with "/api/books/:id"
-router
+/* router
   .route("/:id")
   .get(blogController.findById)
   .put(blogController.update)
-  .delete(blogController.remove);
+  .delete(blogController.remove); */
 
 module.exports = router;
