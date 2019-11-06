@@ -1,4 +1,5 @@
 import React from "react";
+import "./style.css"
 
 // This file exports the Input, TextArea, and FormBtn components
 
@@ -10,6 +11,22 @@ export function Input(props) {
   );
 }
 
+export function SelectBox({ props, children }){
+  return (
+    <div className="form-group">
+      <select className="postCategory">
+        {children}
+      </select>
+    </div>
+  );
+}
+export function TextArea({ props }){
+  return (
+    <div className="form-group">
+       <textarea className="form-control" {...props}> </textarea>
+    </div>
+  );
+}
 
 export function FormBtn(props) {
   return (
@@ -18,3 +35,4 @@ export function FormBtn(props) {
     </button>
   );
 }
+

@@ -47,7 +47,7 @@ class Login extends Component {
                 type="password"
                 placeholder="***** (required)"
               />
-
+              <hr />
               <FormBtn
                 onClick={this.handleFormSubmit}
               >

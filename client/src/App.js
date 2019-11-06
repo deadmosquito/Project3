@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Registration from "./pages/Registration";
 import News from "./pages/News";
+import NewPost from "./pages/NewPost";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
@@ -19,6 +20,7 @@ function App() {
       <Route exact path="/login" component={Login} />
       <Route exact path="/registration" component={Registration} />
       <Route exact path="/news" component={News} />
+      <Route exact path="/new-post" component={NewPost} />
      {/*  <Route exact path="/saved" component={Saved} />
    <Route exact path="/books/:id" component={Detail} />*/}    
       
