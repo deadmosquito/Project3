@@ -35,13 +35,13 @@ function Nav() {
                 <a class="nav-link" href="/">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/technology">Blogs</a>
+                <a class="nav-link" href="/blogs">Blogs</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/business">News</a>
+                <a class="nav-link" href="/news">News</a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" href="/sports">Share a Post</a>
+                  <a class="nav-link" href="/new-post">Share a Post</a>
               </li>
             </ul>
           </div>
