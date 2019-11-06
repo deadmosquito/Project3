@@ -39,3 +39,16 @@ export function ColDark({ size, children }) {
     </div>
   );
 }
+export function ColLight({ size, children }) {
+  return (
+    <div
+      className={size
+        .split(" ")
+        .map(size => "colLightBorder col-" + size)
+        .join(" ") 
+      }
+    >
+      {children}
+    </div>
+  );
+}
