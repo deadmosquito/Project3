@@ -18,10 +18,7 @@ function Nav() {
                 <a class="nav-link" href="#"><i class="far fa-bookmark" aria-hidden="true">  </i></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fas fa-user-plus" aria-hidden="true">  </i></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fas fa-user-circle" aria-hidden="true"></i></a>
+                <a class="nav-link" href="/login"><i class="fas fa-user-circle" aria-hidden="true"></i></a>
               </li>
             </ul>
           </div>

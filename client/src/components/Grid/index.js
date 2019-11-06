@@ -26,3 +26,16 @@ export function Col({ size, children }) {
     </div>
   );
 }
+export function ColDark({ size, children }) {
+  return (
+    <div
+      className={size
+        .split(" ")
+        .map(size => "colDarkBg col-" + size)
+        .join(" ") 
+      }
+    >
+      {children}
+    </div>
+  );
+}
