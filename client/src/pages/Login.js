@@ -1,25 +1,21 @@
 import React, { Component } from "react";
 import API from "../utils/API";
-import { Link } from "react-router-dom";
 import { Col, Row, Container, ColDark } from "../components/Grid";
 import { Input, FormBtn } from "../components/Form";
 
 import axios from "axios";
 
-class Books extends Component {
+class Login extends Component {
   state = {
     username: [],
     password: ""
     };
-
-
-  DeleteSavedBook = (data) => {
-    console.log(data)
-    API.deleteBook(data)
-      .then(res => this.loadBooks())
-      .catch(err => console.log(err));
-  };
-
+    handleInputChange = event => {
+      const { name, value } = event.target;
+      this.setState({
+        [name]: value
+      });
+    };
 
   render() {
     return (
@@ -48,16 +44,16 @@ class Books extends Component {
                 value={this.state.password}
                 onChange={this.handleInputChange}
                 name="password"
+                type="password"
                 placeholder="***** (required)"
               />
 
               <FormBtn
-                /* disabled={!(this.state.author && this.state.title)} */
                 onClick={this.handleFormSubmit}
               >
-                Search
+                Login
               </FormBtn>
-            <a href="/registration" className="registrationLink">Registration</a>
+              <a href="/registration" className="registrationLink">Registration</a>
             </form>
           </ColDark>
           <Col size="md-4"></Col>
@@ -67,4 +63,4 @@ class Books extends Component {
   }
 }
 
-export default Books;
+export default Login;
