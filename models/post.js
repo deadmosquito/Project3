@@ -1,28 +1,16 @@
 module.exports = function (sequelize, DataTypes) {
   var Post = sequelize.define("Post", {
     title: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1]
-      }
+      type: DataTypes.STRING
     },
     description: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      len: [1, 20]
+      type: DataTypes.STRING
     },
     body: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-      len: [1]
+      type: DataTypes.TEXT
     },
     image: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1]
-      }
+      type: DataTypes.STRING
     }
 
   });
@@ -32,13 +20,13 @@ module.exports = function (sequelize, DataTypes) {
     // A Post can't be created without an Author due to the foreign key constraint
     Post.belongsTo(models.Author, {
       foreignKey: {
-        allowNull: false
+        allowNull: true
       }
     });
 
     Post.belongsTo(models.Category, {
       foreignKey: {
-        allowNull: false
+        allowNull: true
       }
     });
   };

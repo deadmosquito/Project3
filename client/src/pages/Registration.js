@@ -9,26 +9,43 @@ class Registration extends Component {
   state = {
     fname: "",
     lname: "",
-    email:"",
-    password:"",
-    rPassword:""
-    };
+    email: "",
+    password: "",
+    rPassword: ""
+  };
 
-    handleInputChange = event => {
-      const { name, value } = event.target;
-      this.setState({
-        [name]: value
-      });
-    };
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
 
-    resetFields = ()=>{
-    
-      this.state.fname= ""
-      this.state.lname=""
-      this.state.email=""
-      this.state.password=""
-      this.state.rPassword=""
-    }
+  resetFields = () => {
+
+    this.state.fname = ""
+    this.state.lname = ""
+    this.state.email = ""
+    this.state.password = ""
+    this.state.rPassword = ""
+  }
+
+  handleFormSubmit = event => {
+    event.preventDefault();
+
+    let authorRegistration = [{
+      fname: this.state.fname,
+      lname: this.state.lname,
+      email: this.state.email,
+      password: this.state.password,
+      rPassword: this.state.rPassword
+    }]
+
+    API.authorRegister({ authorRegistration })
+      .then((result) => console.log(result))
+      .catch(err => console.log(err));
+  }
+
   render() {
     return (
       <Container fluid>
@@ -74,7 +91,7 @@ class Registration extends Component {
                 type="password"
                 placeholder="***** (required)"
               />
-               <label>Repeat Password:</label>
+              <label>Repeat Password:</label>
               <Input
                 value={this.state.rPassword}
                 onChange={this.handleInputChange}
@@ -82,14 +99,14 @@ class Registration extends Component {
                 type="password"
                 placeholder="***** (required)"
               />
-                <hr />
+              <hr />
               <FormBtn
                 onClick={this.handleFormSubmit}
               >
                 Register
               </FormBtn>
-            
-            <a onClick={() => this.resetFields()} href="#" className="registrationLink">Reset</a>
+
+              <a onClick={() => this.resetFields()} href="#" className="registrationLink">Reset</a>
 
             </form>
           </ColDark>

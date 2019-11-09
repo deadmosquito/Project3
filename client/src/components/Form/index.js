@@ -14,7 +14,7 @@ export function Input(props) {
 export function SelectBox({ props, children }){
   return (
     <div className="form-group">
-      <select className="postCategory">
+      <select className="postCategory" {...props}>
         {children}
       </select>
     </div>
