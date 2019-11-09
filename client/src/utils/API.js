@@ -22,7 +22,7 @@ export default {
   getCategories: function(){
     return axios.get("/api/new-post")
   },
-  authorRegister: function(){
-    return axios.post("/api/registration")
+  authorRegister: function(authtData){
+    return axios.post("/api/registration",authtData)
   }
 };
