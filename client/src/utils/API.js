@@ -23,10 +23,12 @@ export default {
   getCategories: function(){
     return axios.get("/api/new-post")
   },
-  authorRegister: function(){
-    return axios.post("/api/registration")
-  },
+
   getNews: function(){
     return axios.get("/api/news")
+  },
+  authorRegister: function(authtData){
+    return axios.post("/api/registration",authtData)
+
   }
 };

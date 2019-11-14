@@ -32,19 +32,17 @@ class Registration extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-
-    let authorRegistration = [{
+    console.log(this.state)
+    API.authorRegister( {
       fname: this.state.fname,
       lname: this.state.lname,
       email: this.state.email,
-      password: this.state.password,
-      rPassword: this.state.rPassword
-    }]
-
-    API.authorRegister({ authorRegistration })
+      password: this.state.password
+    } )
       .then((result) => console.log(result))
       .catch(err => console.log(err));
   }
+
 
   render() {
     return (
@@ -61,7 +59,7 @@ class Registration extends Component {
           <Col size="md-4"></Col>
           <ColDark size="md-4">
             <form>
-              <label>First Name:</label>
+              <label>First Name:</label>{this.state.fname}
               <Input
                 value={this.state.fname}
                 onChange={this.handleInputChange}
