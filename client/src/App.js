@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import {ToastContainer} from "react-toastify"
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Registration from "./pages/Registration";
@@ -15,7 +16,7 @@ function App() {
     <div>
       
       <Nav />
-      
+      <ToastContainer />
       <Route exact path="/" component={Home} />
       <Route exact path="/login" component={Login} />
       <Route exact path="/registration" component={Registration} />

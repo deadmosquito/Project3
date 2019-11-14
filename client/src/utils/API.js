@@ -1,4 +1,5 @@
 import axios from "axios";
+const apiKey = process.env.REACT_APP_NEWS_APIKEY
 
 export default {
   getBooks: function() {
@@ -24,5 +25,8 @@ export default {
   },
   authorRegister: function(){
     return axios.post("/api/registration")
+  },
+  getNews: function(){
+    return axios.get("/api/news")
   }
 };
