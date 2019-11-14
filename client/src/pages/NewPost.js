@@ -23,6 +23,7 @@ class NewPost extends Component {
    .then((res) =>{
    
      if(!(res.data.isAuthorLoggin)){
+      toast.info("Please Try To Login... !");
       this.props.history.push('/login', { some: 'state' })
      }else{
 
@@ -48,7 +49,7 @@ class NewPost extends Component {
   loadCategories = () => {
     API.getCategories()
       .then((res) => {
-        toast.info("Searching books... !");
+        
         console.log(res)
         this.setState({ categories: res.data.dataCategory })
       }).catch(err => console.log(err));

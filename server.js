@@ -29,7 +29,7 @@ passport.deserializeUser(auth.deserializeUser);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 console.log(process.env.NODE_ENV)
-
+ 
 const sessConfig = {
   secret: 'keyboard cat',
   store: new SequelizeStore({

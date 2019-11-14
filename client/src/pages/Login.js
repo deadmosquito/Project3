@@ -57,7 +57,7 @@ class Login extends Component {
           <Col size="md-12 sm-12">
             <Col size="md-12">
               <h1 className="text-center">Login</h1>
-              <h3 style={{color: 'red'}}>{this.state.alertText}</h3>
+              <h3 style={{color: 'red'}}></h3>
             </Col>
           </Col>
         </Row>
