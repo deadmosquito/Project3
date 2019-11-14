@@ -4,15 +4,26 @@ const db = require("../models");
 // Defining methods for the booksController
 module.exports = {
   findAll: function(req, res) {
+    if(req.session.isAuthorLoggin ===false){
+      let data = {
+        isSuccess: "No"
+      }
+      return res.json(data)
+    }
     db.Category
       .findAll({})
       .then((dbModel) =>{
-        console.log(dbModel)
-        res.json(dbModel)} )
+        
+        let data ={
+          dataCategory : dbModel,
+          authorId: req.session.authorId,
+          isAuthorLoggin: req.session.isAuthorLoggin
+        }
+    
+        res.json(data)} )
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
-    console.log(req.body)
     db.Post
       .create({
         title: req.body.title,
@@ -22,10 +33,8 @@ module.exports = {
         AuthorId: req.body.AuthorId,
         CategoryId: req.body.CategoryId
       })
-      .then((dbModel) => {
-        console.log(dbModel)
+      .then((dbModel) => {  
         res.json(dbModel) 
-        console.log(dbModel)
       })
       .catch(err => res.status(422).json(err));
   }

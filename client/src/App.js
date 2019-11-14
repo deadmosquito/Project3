@@ -1,4 +1,5 @@
 import React from "react";
+import { ToastContainer } from "react-toastify";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -13,17 +14,14 @@ function App() {
   return (
     <Router>
     <div>
-      
+   
       <Nav />
-      
+      <ToastContainer />
       <Route exact path="/" component={Home} />
       <Route exact path="/login" component={Login} />
       <Route exact path="/registration" component={Registration} />
       <Route exact path="/news" component={News} />
       <Route exact path="/new-post" component={NewPost} />
-     {/*  <Route exact path="/saved" component={Saved} />
-   <Route exact path="/books/:id" component={Detail} />*/}    
-      
       <Footer />
     </div>
 
