@@ -3,17 +3,37 @@ import API from "../utils/API";
 import { Col, Row, Container, ColDark, ColLight } from "../components/Grid";
 import { Input, FormBtn, SelectBox, TextArea } from "../components/Form";
 import axios from "axios";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { save } from 'save-file'
 
 class NewPost extends Component {
   state = {
     title: "",
-    description: ""
+    description: "",
+    AuthorId:0
   };
   componentDidMount() {
     this.loadCategories();
+    this.checkSession();
   }
 
+  checkSession = ()=>{
+   API.getAllSession()
+   .then((res) =>{
+   
+     if(!(res.data.isAuthorLoggin)){
+      toast.info("Please Try To Login... !");
+      this.props.history.push('/login', { some: 'state' })
+     }else{
+
+       this.setState({
+         AuthorId: res.data.authorId
+       })
+     }
+   } )
+   .catch(err => console.log(err))
+ }
   constructor(props) {
     super(props);
     this.state = {
@@ -29,8 +49,9 @@ class NewPost extends Component {
   loadCategories = () => {
     API.getCategories()
       .then((res) => {
+        
         console.log(res)
-        this.setState({ categories: res.data })
+        this.setState({ categories: res.data.dataCategory })
       }).catch(err => console.log(err));
   }
   handleImageChange = e => {
@@ -83,7 +104,7 @@ class NewPost extends Component {
       description: this.state.description,
       body: this.state.content,
       image: this.state.image,
-      AuthorId: 1,
+      AuthorId: this.state.AuthorId,
       CategoryId: this.state.category
     })
       .then((result) => console.log(result))
@@ -97,7 +118,7 @@ class NewPost extends Component {
         <Row>
           <Col size="md-12 sm-12">
             <Col size="md-12">
-              <h1 className="text-center">Share a New Post</h1>
+              <h1 className="text-center">Share a New Post</h1>{this.state.AuthorId}
             </Col>
           </Col>
         </Row>
@@ -113,7 +134,7 @@ class NewPost extends Component {
                 name="title"
                 placeholder="title (required)"
               />
-              <label>Post Description:</label>
+              <label>Post Description:</label>{this.state.description}
               <Input
                 value={this.state.description}
                 onChange={this.handleInputChange}

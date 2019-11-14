@@ -11,30 +11,12 @@ import "./style.css"
 
 class Books extends Component {
   state = {
-    books: [],
-    title: "",
-    author: "",
-    synopsis: "",
-    googleAllBooks: []
+    
   };
 
-  componentDidMount() {
-    this.loadBooks();
-  }
-
-  loadBooks = () => {
-    API.getBooks()
-      .then(res =>
-        this.setState({ books: res.data, title: "" })
-      )
-      .catch(err => console.log(err));
-  };
 
   saveBook = (data) => {
-    console.log(data)
-    API.saveBook(data)
-      .then(res => this.loadBooks())
-      .catch(err => console.log(err));
+
   };
 
   handleInputChange = event => {
@@ -44,18 +26,6 @@ class Books extends Component {
     });
   };
 
-  handleFormSubmit = event => {
-    event.preventDefault();
-    axios.get("https://www.googleapis.com/books/v1/volumes?q=" + this.state.title)
-      .then(res => {
-        this.setState({ googleAllBooks: res.data.items, title: "" })
-      }
-      )
-      .catch((err) => {
-        console.log(err)
-      });
-
-  };
 
   render() {
     return (

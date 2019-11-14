@@ -11,7 +11,9 @@ class Registration extends Component {
     lname: "",
     email: "",
     password: "",
-    rPassword: ""
+    rPassword: "",
+    flagTrue:'',
+    flagFalse:""
   };
 
   handleInputChange = event => {
@@ -19,29 +21,60 @@ class Registration extends Component {
     this.setState({
       [name]: value
     });
+    //this.checkPassword()
   };
-
+/* checkPassword = ()=>
+{
+  console.log(this.state.rPassword)
+  if(this.state.password === this.state.rPassword){
+    this.setState({flagTrue : 'MATCHED'})
+  }else{
+    this.setState({flagFalse :'NOT MATCHED'})
+  }
+} */
   resetFields = () => {
-
-    this.state.fname = ""
-    this.state.lname = ""
-    this.state.email = ""
-    this.state.password = ""
-    this.state.rPassword = ""
+    this.setState({
+      fname : "",
+      lname : "",
+      email : "",
+      password : "",
+      rPassword : "",
+      flagFalse:"",
+      flagTrue:""
+    })
   }
 
   handleFormSubmit = event => {
     event.preventDefault();
-    console.log(this.state)
-    API.authorRegister( {
+    if(this.state.password === this.state.rPassword){
+      this.setState({flagTrue : 'MATCHED',flagFalse:''})
+      API.authorRegister( {
+        fname: this.state.fname,
+        lname: this.state.lname,
+        email: this.state.email,
+        password: this.state.password
+      } )
+        .then((result) =>{
+          console.log(result)
+          this.resetFields()
+        })
+        .catch(err => console.log(err));
+
+    }else{
+      this.setState({flagFalse :'NOT MATCHED',flagTrue:''})
+    }
+    
+ /*    API.authorRegister( {
       fname: this.state.fname,
       lname: this.state.lname,
       email: this.state.email,
       password: this.state.password
     } )
       .then((result) => console.log(result))
-      .catch(err => console.log(err));
+      this.resetFields()
+      .catch(err => console.log(err)); */
   }
+  
 
 
   render() {
@@ -90,6 +123,8 @@ class Registration extends Component {
                 placeholder="***** (required)"
               />
               <label>Repeat Password:</label>
+              <label style={{color:'red', fontWeight:'bolder'}} >{this.state.flagFalse}</label>
+              <label style={{color:'Green', fontWeight:'bolder'}} >{this.state.flagTrue}</label>
               <Input
                 value={this.state.rPassword}
                 onChange={this.handleInputChange}
@@ -99,6 +134,7 @@ class Registration extends Component {
               />
               <hr />
               <FormBtn
+              disabled={!(this.state.fname && this.state.lname && this.state.email && this.state.password && this.state.rPassword)}
                 onClick={this.handleFormSubmit}
               >
                 Register
