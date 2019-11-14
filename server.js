@@ -39,6 +39,11 @@ const sessConfig = {
   proxy: false,
   cookie: { path: '/', httpOnly: true, maxAge: 5 * 60 * 1000 }
 }
+app.use(session(sessConfig));
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use(routes);
 
 if (process.env.NODE_ENV === 'production') {
   // Exprees will serve up production assets
@@ -50,11 +55,7 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-app.use(session(sessConfig));
-app.use(passport.initialize());
-app.use(passport.session());
 
-app.use(routes);
 
 database.sequelize.sync().then(function() {
   app.listen(PORT, function() {
