@@ -35,3 +35,16 @@
 .postCategory{
     width: 100%;
 }
+.NewsReadMore{
+    border: 1px solid #000;
+    padding: 10px 15px;
+    color: black;
+}
+.NewsReadMore:hover{
+    background-color: #343a40;
+    color:white;
+    text-decoration: none;
+}
+.rowMarginSpace{
+    margin: 20px 0;
+}
