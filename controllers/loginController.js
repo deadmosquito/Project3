@@ -9,7 +9,7 @@ module.exports = {
     //console.log(username.body.password)
 
     // console.log(password)
-    db.Author.findOne({ email: username })
+    db.Author.findOne({where:{ email: username.body.email }})
       .then(author => {
         if (!author) {
 
@@ -17,13 +17,12 @@ module.exports = {
         }
         return bcrypt.compare(username.body.password, author.hash)
           .then(match => {
+           
             if (match) {
 
-              console.log(author.dataValues.id)
               username.session.authorId = author.dataValues.id
               username.session.isAuthorLoggin = true;
               console.log('=============-')
-              console.log(username)
               return done(null, author);
             }
             return done(null, false, { message: 'Incorrect username or password.' });
