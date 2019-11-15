@@ -118,7 +118,7 @@ class NewPost extends Component {
         <Row>
           <Col size="md-12 sm-12">
             <Col size="md-12">
-              <h1 className="text-center">Share a New Post</h1>{this.state.AuthorId}
+              <h1 className="text-center">Share a New Post</h1>
             </Col>
           </Col>
         </Row>
