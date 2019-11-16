@@ -27,7 +27,7 @@ module.exports = {
     db.Post
       .create({
         title: req.body.title,
-        description: req.bodydescription,
+        description: req.body.description,
         body: req.body.body,
         image:req.body.image,
         AuthorId: req.body.AuthorId,
@@ -37,5 +37,23 @@ module.exports = {
         res.json(dbModel) 
       })
       .catch(err => res.status(422).json(err));
+  },
+  all: function(req, res){
+    db.Post.findAll({include: [db.Author,db.Category]})
+    .then((dbAll) =>{
+      res.json(dbAll)
+    })
+    .catch(err =>res.status(422).json(err))
+  },
+  detail: function(req,res){
+    console.log('---------------')
+    console.log(req.params)
+    console.log('---------------')
+    db.Post.findOne({where:{id :req.params.id},include: [db.Author,db.Category]})
+    .then((result) =>{
+     // console.log(result)
+      res.json(result)
+    })
+    .catch(err =>console.log(err))
   }
 };
