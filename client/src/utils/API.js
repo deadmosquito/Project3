@@ -1,14 +1,22 @@
 import axios from "axios"; 
 export default {
+  getAllBlogs: function(){
+    return axios.get("/api/all")
+  },
+  getBlog: function(id){
+    return axios.get("/api/blogs/"+ id)
+  },
   savePost: function(postData) {
     return axios.post("/api/new-post", postData);
   },
   getCategories: function(){
     return axios.get("/api/new-post")
   },
-
   getNews: function(){
     return axios.get("/api/news")
+  },
+  getNewsFive:function(){
+    return axios.get("/api/newsfive")
   },
   authorRegister: function(authtData){
     return axios.post("/api/registration",authtData)

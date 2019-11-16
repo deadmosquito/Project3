@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Registration from "./pages/Registration";
+import Blogs from "./pages/Blogs";
+import Detail from "./pages/Detail";
 import News from "./pages/News";
 import NewPost from "./pages/NewPost";
 import NoMatch from "./pages/NoMatch";
@@ -20,6 +22,8 @@ function App() {
       <Route exact path="/login" component={Login} />
       <Route exact path="/registration" component={Registration} />
       <Route exact path="/news" component={News} />
+      <Route exact path="/blogs" component={Blogs} />
+      <Route exact path="/blogs/:id" component={Detail} />
       <Route exact path="/new-post" component={NewPost} />
       <Footer />
     </div>

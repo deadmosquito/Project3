@@ -37,7 +37,7 @@ const sessConfig = {
   }),
   resave: false, // we support the touch method so per the express-session docs this should be set to false
   proxy: false,
-  cookie: { path: '/', httpOnly: true, maxAge: 5 * 60 * 1000 }
+  cookie: { path: '/', httpOnly: true, maxAge: null  }
 }
 app.use(session(sessConfig));
 app.use(passport.initialize());
