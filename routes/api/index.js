@@ -7,6 +7,7 @@ const news = require("./news")
 const logout = require("./logout")
 const all = require("./all")
 const blog = require("./blog")
+const profile = require("./profile");
 const newsfive = require("./newsfive")
 
 router.use("/new-post", newPost)
@@ -18,5 +19,6 @@ router.use('/home',home)
 router.use("/news", news)
 router.use("/logout", logout)
 router.use("/newsfive", newsfive)
+router.use("/profile", profile)
 
 module.exports = router;
