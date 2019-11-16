@@ -141,7 +141,7 @@ class Blogs extends Component {
               <h5>News Title</h5>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
               </p>
-              <a className="text-center" href="#">Read More!</a>
+              <a className="text-center" href="/News">Read More!</a>
 
             </Col>
           </Row>
