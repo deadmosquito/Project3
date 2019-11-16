@@ -27,5 +27,11 @@ export default {
   },
   logOut:function(){
     return axios.get("/api/logout")
+  },
+  getUserData:function(){
+    return axios.get("/api/profile")
+  },
+  updateUserData:function(data){
+    return axios.put("/api/profile", data)
   }
 };
