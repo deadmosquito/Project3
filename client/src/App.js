@@ -14,8 +14,7 @@ function App() {
   return (
     <Router>
     <div>
-   
-      <Nav />
+      {/* <Nav /> */}
       <ToastContainer />
       <Route exact path="/" component={Home} />
       <Route exact path="/login" component={Login} />

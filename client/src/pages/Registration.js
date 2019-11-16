@@ -2,10 +2,32 @@ import React, { Component } from "react";
 import API from "../utils/API";
 import { Col, Row, Container, ColDark } from "../components/Grid";
 import { Input, FormBtn } from "../components/Form";
-
-import axios from "axios";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Nav from "../components/Nav";
+import NavLoginedIn from "../components/NavLoginedIn";
 
 class Registration extends Component {
+  componentDidMount() {
+    this.getAllSessionForMenu();
+  }
+  getAllSessionForMenu = ()=>{
+    API.getAllSessionForMenu()
+    .then((res) =>{
+     console.log(res)
+      if(!(res.data.isAuthorLoggin)){
+      
+        this.setState({
+         menu:false
+        })
+      }else{
+       this.setState({
+         menu:true
+        })
+      }
+    })
+    .catch(err => console.log(err))
+  }
   state = {
     fname: "",
     lname: "",
@@ -56,7 +78,11 @@ class Registration extends Component {
       } )
         .then((result) =>{
           console.log(result)
-          this.resetFields()
+        toast.info("Thank you For registration. Please Try To Login... !");
+
+          this.props.history.push('/login', { some: 'state' })
+
+         // this.resetFields()
         })
         .catch(err => console.log(err));
 
@@ -79,6 +105,8 @@ class Registration extends Component {
 
   render() {
     return (
+      <div>
+      {this.state.menu ? <NavLoginedIn /> : <Nav />}
       <Container fluid>
         <Row>
           <Col size="md-12 sm-12">
@@ -147,6 +175,7 @@ class Registration extends Component {
           <Col size="md-4"></Col>
         </Row>
       </Container>
+      </div>
     );
   }
 }

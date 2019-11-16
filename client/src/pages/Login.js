@@ -2,16 +2,33 @@ import React, { Component } from "react";
 import API from "../utils/API";
 import { Col, Row, Container, ColDark } from "../components/Grid";
 import { Input, FormBtn } from "../components/Form";
-import { Redirect  } from "react-router-dom";
-
-import axios from "axios";
-import { strictEqual } from "assert";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Nav from "../components/Nav";
+import NavLoginedIn from "../components/NavLoginedIn";
 
 class Login extends Component {
   componentDidMount() {
     this.loginSession();
+    this.getAllSessionForMenu();
   }
-
+  getAllSessionForMenu = ()=>{
+    API.getAllSessionForMenu()
+    .then((res) =>{
+     console.log(res)
+      if(!(res.data.isAuthorLoggin)){
+      
+        this.setState({
+         menu:false
+        })
+      }else{
+       this.setState({
+         menu:true
+        })
+      }
+    })
+    .catch(err => console.log(err))
+  }
   state = {
     email: "",
     password: "",
@@ -26,12 +43,23 @@ class Login extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    console.log(this.state)
     API.authorLogin({
       email: this.state.email,
       password: this.state.password
     })
-      .then((result) => console.log(result))
+      .then((result) =>{
+        console.log(result)
+      if(!(result.data.isAuthorLoggin))
+      {
+        toast.info("username or password is wrong... !");
+
+      }else{
+        toast.info("you are redirecting to new post page... !");
+        this.props.history.push('/new-post', { some: 'state' })
+        
+      }
+       
+      })
       .catch(err => console.log(err));
   }
 
@@ -40,18 +68,19 @@ class Login extends Component {
       .then((res) => {
         console.log(res)
         if (res.data.isSuccess === "Yes") {
+          toast.info("You are logged in... !");
           this.props.history.push('/new-post', { some: 'state' })
         }
         if (res.data.isSuccess === "No") {
-          this.setState({
-            alertText: "Please Try To Login"
-          })
+          toast.info("Please Try To Login... !");
         }
       })
       .catch(err => console.log(err))
   }
   render() {
     return (
+      <div>
+      {this.state.menu ? <NavLoginedIn /> : <Nav />}
       <Container fluid>
         <Row>
           <Col size="md-12 sm-12">
@@ -93,6 +122,7 @@ class Login extends Component {
           <Col size="md-4"></Col>
         </Row>
       </Container>
+      </div>
     );
   }
 }

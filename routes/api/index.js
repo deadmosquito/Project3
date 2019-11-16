@@ -4,11 +4,13 @@ const registration = require("./registration")
 const login = require("./login")
 const home = require("./home")
 const news = require("./news")
+const logout = require("./logout")
 
 router.use("/new-post", newPost)
 router.use("/registration", registration)
 router.use("/login", login)
-router.use('/',home)
+router.use('/home',home)
 router.use("/news", news)
+router.use("/logout", logout)
 
 module.exports = router;

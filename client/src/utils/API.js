@@ -1,6 +1,4 @@
-import axios from "axios";
-const apiKey = process.env.REACT_APP_NEWS_APIKEY
-
+import axios from "axios"; 
 export default {
   savePost: function(postData) {
     return axios.post("/api/new-post", postData);
@@ -23,6 +21,11 @@ export default {
   },
   getAllSession: function(){
     return axios.get("/api/new-post")
-
+  },
+  getAllSessionForMenu:function(){
+    return axios.get("/api/home")
+  },
+  logOut:function(){
+    return axios.get("/api/logout")
   }
 };

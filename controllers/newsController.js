@@ -6,10 +6,10 @@ module.exports = {
         console.log(apiKey)
       axois.get("https://newsapi.org/v2/top-headlines?country=us"+apiKey)
       .then(function(result){
-        console.log(result)
+        //console.log(result)
 
         res.json(result.data.articles)
-        console.log("pleaseeeeeeeeeeeeeeeeeeeeeeee------------------------------")
+       // console.log("pleaseeeeeeeeeeeeeeeeeeeeeeee------------------------------")
       })
       .catch(err =>console.log(`errorrrrrrrrrrrrrr${err}`))
 

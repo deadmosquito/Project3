@@ -1,7 +1,20 @@
-import React from "react";
+import React, { Component } from "react";
 import "./style.css";
-
-function Nav() {
+import API from "../../utils/API";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+class NavLoginedIn extends Component {
+   logOutFun =()=>{
+    API.logOut()
+    .then((res)=>{
+      console.log(res)
+     toast.info("you are successfully logged out... !");
+     window.location.reload();
+    // this.props.history.push('/login', { some: 'state' })
+    }).catch(err=>console.log(err))
+   }
+  render() {
+ 
   return (
     <div className="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -40,12 +53,17 @@ function Nav() {
               <li class="nav-item">
                 <a class="nav-link" href="/news">News</a>
               </li>
-           
+              <li class="nav-item">
+                  <a class="nav-link" href="/new-post">Share a Post</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" onClick={() => this.logOutFun()}>Log Out</a>
+              </li>
             </ul>
           </div>
         </nav>
     </div>
   );
 }
-
-export default Nav;
+}
+export default NavLoginedIn;
