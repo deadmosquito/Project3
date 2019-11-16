@@ -7,6 +7,9 @@ module.exports = function (sequelize, DataTypes) {
     githubId: {
       type: DataTypes.STRING
     },
+    githubURL: {
+      type: DataTypes.STRING
+    },
     hash: {
       type: DataTypes.STRING
     },
@@ -14,6 +17,9 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING
     },
     lname: {
+      type: DataTypes.STRING
+    },
+    profileURL: {
       type: DataTypes.STRING
     }
   });
