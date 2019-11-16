@@ -35,7 +35,6 @@
     "passport": "^0.4.0",
     "passport-github2": "^0.1.11",
     "passport-local": "^1.0.0",
-    "react-dom": "^16.12.0",
     "save": "^2.4.0",
     "save-file": "^2.3.1",
     "sequelize": "^5.21.2"
