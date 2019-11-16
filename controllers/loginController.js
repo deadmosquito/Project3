@@ -4,28 +4,24 @@ const passport = require('passport')
 const auth = require('../utils/auth');
 
 module.exports = {
-  verify: (username, password, done) => {
-    //console.log(username.body.email)
-    //console.log(username.body.password)
-
-    // console.log(password)
+  verify: (username, password,done) => {
     db.Author.findOne({where:{ email: username.body.email }})
       .then(author => {
         if (!author) {
-
-          return done(null, false, { message: 'Incorrect username or password.' });
+        return  password.json(username.session)
+         // return done(null, false, { message: 'Incorrect username or password.' });
         }
         return bcrypt.compare(username.body.password, author.hash)
           .then(match => {
            
             if (match) {
-
               username.session.authorId = author.dataValues.id
               username.session.isAuthorLoggin = true;
-              console.log('=============-')
-              return done(null, author);
+              return password.json(username.session)
+              //return done(null, author);
             }
-            return done(null, false, { message: 'Incorrect username or password.' });
+           // return done(null, false, { message: 'Incorrect username or password.' });
+           return password.json(username.session)
           })
           .catch(err => done(err));
       })

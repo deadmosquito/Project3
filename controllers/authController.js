@@ -34,11 +34,13 @@ module.exports = {
       })
   },
   logout: (req, res) => {
-    req.logout();
-    res.sendStatus(200);
+    console.log(req.session)
+    console.log('=========')
+    req.session.destroy()
+    console.log(req.session)
   },
-  hi: (req,res)=>
+  checker: (req,res)=>
   {
-    console.log('aaaaaaaaaaa')
+    res.json(req.session)
   }
 };

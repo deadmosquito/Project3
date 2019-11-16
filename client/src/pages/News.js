@@ -1,14 +1,10 @@
 import React, { Component } from "react";
 import API from "../utils/API";
-import Jumbotron from "../components/Jumbotron"
 import { Col, Row, Container, ColDark } from "../components/Grid";
 import {toast} from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css'
-import axios from "axios";
-import { strict } from "assert";
-const apiKey = process.env.REACT_APP_NEWS_APIKEY
-
-
+import Nav from "../components/Nav";
+import NavLoginedIn from "../components/NavLoginedIn";
 
 class News extends Component {
   constructor(props) {
@@ -23,8 +19,26 @@ class News extends Component {
  
   componentDidMount() {
     this.apiNewsCall();
+    this.getAllSessionForMenu();
+
   }
- 
+  getAllSessionForMenu = ()=>{
+    API.getAllSessionForMenu()
+    .then((res) =>{
+     console.log(res)
+      if(!(res.data.isAuthorLoggin)){
+      
+        this.setState({
+         menu:false
+        })
+      }else{
+       this.setState({
+         menu:true
+        })
+      }
+    })
+    .catch(err => console.log(err))
+  }
   apiNewsCall = () => {
     API.getNews()
       .then((res) => {
@@ -34,18 +48,10 @@ class News extends Component {
       }).catch(err => console.log(err));
   }
 
-
-
-
-  /* apiNewsCall = () => {
-    axios
-      .get("https://newsapi.org/v2/top-headlines?country=us" + apiKey)
-      .then(({ data: { results } }) => console.log(results))
-      .catch(err => console.log(err));
-  }; */
-
   render() {
     return (
+      <div>
+      {this.state.menu ? <NavLoginedIn /> : <Nav />}
       <Container fluid>
         {/* {this.state.articles.map(singleNews => */}
         <Row>
@@ -81,6 +87,7 @@ class News extends Component {
           </Col>
         </Row>
         </Container>
+        </div>
         )
     
   };

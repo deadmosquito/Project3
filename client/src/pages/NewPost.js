@@ -3,9 +3,8 @@ import API from "../utils/API";
 import { Col, Row, Container, ColDark, ColLight } from "../components/Grid";
 import { Input, FormBtn, SelectBox, TextArea } from "../components/Form";
 import axios from "axios";
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { save } from 'save-file'
+import Nav from "../components/Nav";
+import NavLoginedIn from "../components/NavLoginedIn";
 
 class NewPost extends Component {
   state = {
@@ -16,14 +15,32 @@ class NewPost extends Component {
   componentDidMount() {
     this.loadCategories();
     this.checkSession();
-  }
+    this.getAllSessionForMenu();
 
+  }
+  getAllSessionForMenu = ()=>{
+    API.getAllSessionForMenu()
+    .then((res) =>{
+     console.log(res)
+      if(!(res.data.isAuthorLoggin)){
+      
+        this.setState({
+         menu:false
+        })
+      }else{
+       this.setState({
+         menu:true
+        })
+      }
+    })
+    .catch(err => console.log(err))
+  }
   checkSession = ()=>{
    API.getAllSession()
    .then((res) =>{
    
      if(!(res.data.isAuthorLoggin)){
-      toast.info("Please Try To Login... !");
+      //toast.info("Please Try To Login... !");
       this.props.history.push('/login', { some: 'state' })
      }else{
 
@@ -114,6 +131,8 @@ class NewPost extends Component {
 
   render() {
     return (
+      <div>
+      {this.state.menu ? <NavLoginedIn /> : <Nav />}
       <Container fluid>
         <Row>
           <Col size="md-12 sm-12">
@@ -187,6 +206,7 @@ class NewPost extends Component {
           <Col size="md-4"></Col>
         </Row>
       </Container>
+      </div>
     );
   }
 }
