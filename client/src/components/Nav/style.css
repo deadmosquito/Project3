@@ -5,3 +5,6 @@
     color: white !important;   
     font-weight: bold;
 }
+.nav-link:hover{
+    color:lightblue !important;
+}

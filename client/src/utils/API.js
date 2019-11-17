@@ -3,6 +3,9 @@ export default {
   getAllBlogs: function(){
     return axios.get("/api/all")
   },
+  getAllBlogs3: function(){
+    return axios.get("/api/all3")
+  },
   getBlog: function(id){
     return axios.get("/api/blogs/"+ id)
   },

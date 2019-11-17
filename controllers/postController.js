@@ -23,6 +23,14 @@ module.exports = {
         res.json(data)} )
       .catch(err => res.status(422).json(err));
   },
+  all3: function(req, res){
+    db.Post.findAll({include: [db.Author,db.Category],limit:3})
+    .then((dbAll) =>{
+      console.log(dbAll)
+      res.json(dbAll)
+    })
+    .catch(err =>res.status(422).json(err))
+  },
   create: function(req, res) {
     db.Post
       .create({
@@ -34,6 +42,8 @@ module.exports = {
         CategoryId: req.body.CategoryId
       })
       .then((dbModel) => {  
+        console.log('----------')
+        console.log(dbModel)
         res.json(dbModel) 
       })
       .catch(err => res.status(422).json(err));
