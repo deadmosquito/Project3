@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import NavLoginedIn from "../components/NavLoginedIn";
 import { Col, Row, Container } from "../components/Grid";
 import Moment from 'react-moment';
+import Slider from "../components/Slider";
 import "./style.css"
 
 class Blogs extends Component {
@@ -66,6 +67,7 @@ render() {
   return (
     <div className={"noSpacing"}>
       {this.state.menu ? <NavLoginedIn /> : <Nav />}
+      <Slider />
       <Container>
         <Row>
           <Col size="md-12">

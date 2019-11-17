@@ -4,7 +4,7 @@ import "./style.css";
 function Nav() {
   return (
     <div className="container-fluid">
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    {/*     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
           <a className="navbar-brand" href="/"> <i className="fas fa-poo-storm" aria-hidden="true"></i>  Project 3</a>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
@@ -22,9 +22,18 @@ function Nav() {
               </li>
             </ul>
           </div>
-        </nav>
+        </nav> */}
         {/* ////////////////////////////////////////////////////// */}
-        
+        <div className="row bg-dark">
+          <div className="col-md-6">
+          <a className="navbar-brand" href="/"> <i className="fas fa-poo-storm" aria-hidden="true"></i>  Project 3</a>
+          </div>
+          <div className="col-md-6 float-right">
+            <span><a href="#"><i className="fas fa-search" aria-hidden="true">  </i></a></span>
+            <span><a href="#"><i className="far fa-bookmark" aria-hidden="true">  </i></a></span>
+            <span><a href="/login"><i className="fas fa-user-circle" aria-hidden="true"></i></a></span>
+          </div>
+        </div>
         <nav className="navbar navbar-expand-lg sticky-top navbar-light bg-light bg-navBar">
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
