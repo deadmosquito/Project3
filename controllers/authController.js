@@ -38,6 +38,7 @@ module.exports = {
     console.log('=========')
     req.session.destroy()
     console.log(req.session)
+    res.status(200)
   },
   checker: (req,res)=>
   {

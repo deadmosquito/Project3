@@ -5,12 +5,11 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 class NavLoginedIn extends Component {
    logOutFun =()=>{
+    toast.info("you are successfully logged out... !");
+    window.location.reload();
     API.logOut()
     .then((res)=>{
-      console.log(res)
-     toast.info("you are successfully logged out... !");
-     window.location.reload();
-    // this.props.history.push('/login', { some: 'state' })
+     console.log(res)
     }).catch(err=>console.log(err))
    }
   render() {
@@ -61,7 +60,7 @@ class NavLoginedIn extends Component {
               </li>
 
               <li className="nav-item">
-                  <a className="nav-link" onClick={() => this.logOutFun()}>Log Out</a>
+                  <a href="#" className="nav-link" onClick={() => this.logOutFun()}>Log Out</a>
               </li>
             </ul>
           </div>

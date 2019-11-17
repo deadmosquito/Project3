@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import API from "../utils/API";
 import { Col, Row, Container, ColDark } from "../components/Grid";
 import {toast} from "react-toastify"
+import { Link } from "react-router-dom";
+import {moment} from "moment";
 import 'react-toastify/dist/ReactToastify.css'
 import Nav from "../components/Nav";
 import NavLoginedIn from "../components/NavLoginedIn";
@@ -12,7 +14,8 @@ class News extends Component {
     this.state = {
       title: "",
     description: "",
-      allNews: []
+      allNews: [],
+      allBlogs:[]
     }
 
   }
@@ -20,7 +23,16 @@ class News extends Component {
   componentDidMount() {
     this.apiNewsCall();
     this.getAllSessionForMenu();
-
+    this.getAllBlogs();
+  }
+  getAllBlogs = () => {
+    API.getAllBlogs3()
+      .then((res) => {
+        toast.info("Blogs are loading on sidebar... !");
+        console.log(res.data)
+        this.setState({ allBlogs: res.data })
+        console.log(this.state.allBlogs)
+      }).catch(err => console.log(err))
   }
   getAllSessionForMenu = ()=>{
     API.getAllSessionForMenu()
@@ -52,9 +64,11 @@ class News extends Component {
     return (
       <div>
       {this.state.menu ? <NavLoginedIn /> : <Nav />}
+      <br />
       <Container fluid>
         {/* {this.state.articles.map(singleNews => */}
         <Row>
+          <Col size="md-9">
           <Col size="md-12 sm-12">
             <Col size="md-12">
               {/* <img src={this.state.newsArray.articles.urlToImage} /> */}
@@ -75,6 +89,7 @@ class News extends Component {
                            <a target="_blank" href={singleNews.url} className="NewsReadMore">Read More...</a>
                         </Col>
                       </Row>
+                      <hr />
                       </div>
                       
                     ))}
@@ -85,6 +100,37 @@ class News extends Component {
                   )} 
             </Col>
           </Col>
+          </Col>
+         <Col size="md-3">
+         <div className="sidebar">
+            {this.state.allBlogs.length ? (
+                 <div>
+
+                    {this.state.allBlogs.map(singleBlog => (
+                      <div className={"rowMarginSpace"}>
+                      <Row>
+                        <Col size="md-12">
+
+
+                          <img className="img-thumbnail" src={singleBlog.image} />
+                           <p><strong>Title: </strong>{singleBlog.title}</p>
+                           <Link className="text-center NewsReadMore" to={"/blogs/" + singleBlog.id}>Read More!</Link>
+                        </Col>
+
+                      </Row>
+                      <hr className="divider" />
+                      </div>
+                      
+                    ))}
+                  </div>
+
+                ) : (
+                    <h3></h3>
+                  )} 
+              </div>
+         
+         </Col>
+
         </Row>
         </Container>
         </div>

@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import "./style.css"
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Moment from 'react-moment';
 
 class Detail extends Component {
 
@@ -28,7 +29,7 @@ class Detail extends Component {
       .then((res) => {
         toast.info('Loading...')
         console.log(res.data)
-        this.setState({allNews:res.data})
+        this.setState({ allNews: res.data })
       }).catch(err => console.log(err));
   }
   getAllSessionForMenu = () => {
@@ -81,37 +82,44 @@ class Detail extends Component {
               <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
               <span><strong> Author: {this.state.author.fname}</strong></span>
               <span> - </span>
-              <span><strong>Create Date: {this.state.blog.createdAt}</strong></span>
+              <span>
+                <strong>
+                  Create Date:
+                  
+                   <Moment format="MM/DD/YYYY HH:mm" date= {this.state.blog.createdAt} />
+                
+                </strong>
+              </span>
             </Col>
-            
+
             <Col size="md-3">
-            <div className="sidebar">
-            {this.state.allNews.length ? (
-                 <div>
+              <div className="sidebar">
+                {this.state.allNews.length ? (
+                  <div>
 
                     {this.state.allNews.map(singleNews => (
                       <div className={"rowMarginSpace"}>
-                      <Row>
-                        <Col size="md-12">
+                        <Row>
+                          <Col size="md-12">
 
 
-                          <img className="img-thumbnail" src={singleNews.urlToImage} />
-                           <p><strong>Title: </strong>{singleNews.title}</p>
-                           <a target="_blank" href={singleNews.url} className="NewsReadMore">Read More...</a>
-                        </Col>
+                            <img className="img-thumbnail" src={singleNews.urlToImage} />
+                            <p><strong>Title: </strong>{singleNews.title}</p>
+                            <a target="_blank" href={singleNews.url} className="NewsReadMore">Read More...</a>
+                          </Col>
 
-                      </Row>
-                      <hr className="divider" />
+                        </Row>
+                        <hr className="divider" />
                       </div>
-                      
+
                     ))}
                   </div>
 
                 ) : (
                     <h3></h3>
-                  )} 
+                  )}
               </div>
-         
+
             </Col>
           </Row>
 
