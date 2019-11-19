@@ -78,7 +78,7 @@ class Registration extends Component {
       } )
         .then((result) =>{
           console.log(result)
-        toast.info("Thank you For registration. Please Try To Login... !");
+        toast.info("Your profile has been created, please login");
 
           this.props.history.push('/login', { some: 'state' })
 
