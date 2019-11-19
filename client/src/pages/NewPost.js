@@ -45,7 +45,7 @@ class NewPost extends Component {
       .then((res) => {
 
         if (!(res.data.isAuthorLoggin)) {
-          //toast.info("Please Try To Login... !");
+          //toast.info("Please Login");
           this.props.history.push('/login', { some: 'state' })
         } else {
 
@@ -111,7 +111,7 @@ class NewPost extends Component {
       CategoryId: this.state.category
     })
       .then((result) => {
-        toast.info("Your post saved successfully... !");
+        toast.info("Your blog has been posted!");
         console.log(result)
         this.resetFields()
       })
