@@ -51,10 +51,10 @@ class Login extends Component {
         console.log(result)
       if(!(result.data.isAuthorLoggin))
       {
-        toast.info("username or password is wrong...");
+        toast.info("username or password is wrong... !");
 
       }else{
-        toast.info("Redirecting to the new post page...");
+        toast.info("you are redirecting to new post page... !");
         this.props.history.push('/new-post', { some: 'state' })
         
       }
