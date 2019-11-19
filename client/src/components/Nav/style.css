@@ -5,6 +5,59 @@
     color: white !important;   
     font-weight: bold;
 }
+.navbar{
+    margin-bottom: 5px;
+}
 .nav-link:hover{
     color:lightblue !important;
 }
+.topbar{
+    margin:0 0 5px 0;
+}
+#category-nav a{
+    font-size: 16px;
+}
+.bg-navBar{
+    border-radius: 0 !important;
+}
+.topBarIcons{
+    text-align: right;
+    padding:15px 10px 0 0;
+}
+.topBarIcons i{
+    color:white;
+    margin-right: 10px;
+    font-size: 16px;
+}
+.custom-toggler,.navbar-toggler {
+    border-color: white !important;
+} 
+.custom-toggler,.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E") !important;
+}
+@media only screen and (max-width: 768px) {
+    .topBarIcons,
+    .topbar{
+        text-align: center;
+    }
+    .navbar-brand{
+        float: none;
+    }
+    .topBarIcons i{
+        padding:0 0 10px 0;
+    }
+}
+@media (min-width: 768px){
+    .navbar-collapse.collapse {
+        display: inherit !important;
+    }
+}
+.tobarCustomPadding{
+    padding:0 !important;
+}
+
+
+
+
+
+  

@@ -10,14 +10,13 @@ import Profile from "./pages/Profile";
 import News from "./pages/News";
 import NewPost from "./pages/NewPost";
 import NoMatch from "./pages/NoMatch";
-import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 
 function App() {
   return (
     <Router>
     <div>
-      {/* <Nav /> */}
+      
       <ToastContainer />
       <Route exact path="/" component={Home} />
       <Route exact path="/login" component={Login} />
