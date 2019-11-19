@@ -1,15 +1,20 @@
+p,span,h1,h2,h3,h4,h5,h6,a{
+    font-family: "Roboto";
+}
 .moreBlogsButton{
     margin: 40px auto;
+    
 }
 .moreBlogsButton a{
     border: 1px solid black;
     text-align: center;
+    color:black !important  ;
     padding: 5px 10px;
-    border-radius: 4px;
+    border-radius: 1px;
 }
 .moreBlogsButton a:hover{
-    background-color: black;
-    color:white;
+    background-color: #343a40;
+    color:white !important;
     text-decoration: none;
 }
 .divider{
@@ -37,7 +42,7 @@
 }
 .NewsReadMore{
     border: 1px solid #000;
-    padding: 10px 15px;
+    padding: 8px 10px;
     color: black;
 }
 .NewsReadMore:hover{
@@ -50,11 +55,53 @@
 }
 .noSpacing{
     padding: 0;
-    margin: 20px 0 0 0;
+    margin:0;
 }
 .sidebar{
     border: 1px solid #000000;
     padding-left: 8px;
     padding-right: 8px;
     box-shadow: 0px 2px 4px 4px;
+}
+.imageBlogsRes{
+    width: 400px;
+    height: 150px;
+}
+.col-md-12 h6{
+    margin-top:20px;
+}
+.fixedHeight{
+    height: 160px;
+}
+.row,colgroup {
+
+    -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein 2s; /* Firefox < 16 */
+        -ms-animation: fadein 2s; /* Internet Explorer */
+         -o-animation: fadein 2s; /* Opera < 12.1 */
+            animation: fadein 2s;
+}
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+/* Internet Explorer */
+@-ms-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+/* Opera < 12.1 */
+@-o-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }

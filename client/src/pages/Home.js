@@ -2,9 +2,12 @@ import React, { Component } from "react";
 import API from "../utils/API";
 import Nav from "../components/Nav";
 import {toast} from "react-toastify"
+import { Link } from "react-router-dom";
 import 'react-toastify/dist/ReactToastify.css'
 import NavLoginedIn from "../components/NavLoginedIn";
 import { Col, Row, Container } from "../components/Grid";
+import Moment from 'react-moment';
+import Slider from "../components/Slider";
 import "./style.css"
 
 class Blogs extends Component {
@@ -14,15 +17,26 @@ class Blogs extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      allNews: []
+      allNews: [],
+      allBlogs: []
     }
   }
 
   componentDidMount() {
     this.apiNewsCall();
     this.getAllSessionForMenu();
+    this.getAllBlogs();
+    
   }
-
+  getAllBlogs = () => {
+    API.getAllBlogs3()
+      .then((res) => {
+        toast.info("Blogs are loading... !");
+        console.log(res.data)
+        this.setState({ allBlogs: res.data })
+        console.log(this.state.allBlogs)
+      }).catch(err => console.log(err))
+  }
   getAllSessionForMenu = ()=>{
    API.getAllSessionForMenu()
    .then((res) =>{
@@ -53,92 +67,36 @@ render() {
   return (
     <div className={"noSpacing"}>
       {this.state.menu ? <NavLoginedIn /> : <Nav />}
+      <Slider />
       <Container>
         <Row>
           <Col size="md-12">
             <h3 style={{ paddingTop: '15px' }} className="text-center">Latest Blogs</h3>
           </Col>
         </Row>
-        <Row>
-          <Col size="md-4 sm-4">
-            <img className="img-fluid img-thumbnail" src="/img/blog-sample.jpg" alt="" />
+        {this.state.allBlogs.length ? (
             <Row>
-              <Col size="md-5">
-                <h4><strong>Title</strong></h4>
-              </Col>
-              <Col size="md-7">
-                <p>Date:<small> 09/23/2019</small> By <small>Ashkan</small></p>
-              </Col>
+              {this.state.allBlogs.map(singleBlog => (
+
+                <Col size="md-4 sm-4">
+                  <img className="img-fluid img-thumbnail imageBlogsRes" src={singleBlog.image} alt="" />
+                  <Col size="md-12">
+                    <h6><strong>Title: </strong>{singleBlog.title}</h6>
+                  </Col>
+                  <Col size="md-12">
+                    <p><strong>Date:</strong><small>  <Moment format="MM/DD/YYYY HH:mm" date= {singleBlog.createdAt} /></small><strong> By </strong><small>{singleBlog.Author.fname}</small></p>
+                  </Col>
+                  <p className="fixedHeight">{singleBlog.description}</p>
+                  <Link className="text-center NewsReadMore" to={"/blogs/" + singleBlog.id}>Read More!</Link>
+                </Col>
+              ))}
             </Row>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-            <a className="text-center" href="#">Read More!</a>
-          </Col>
-          <Col size="md-4 sm-4">
-            <img className="img-fluid img-thumbnail" src="/img/blog-sample.jpg" alt="" />
-            <Row>
-              <Col size="md-5">
-                <h4><strong>Title</strong></h4>
-              </Col>
-              <Col size="md-7">
-                <p>Date:<small> 09/23/2019</small> By <small>Ashkan</small></p>
-              </Col>
-            </Row>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-            <a className="text-center" href="#">Read More!</a>
-          </Col><Col size="md-4 sm-4">
-            <img className="img-fluid img-thumbnail" src="/img/blog-sample.jpg" alt="" />
-            <Row>
-              <Col size="md-5">
-                <h4><strong>Title</strong></h4>
-              </Col>
-              <Col size="md-7">
-                <p>Date:<small> 09/23/2019</small> By <small>Ashkan</small></p>
-              </Col>
-            </Row>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-            <a className="text-center" href="#">Read More!</a>
-          </Col><Col size="md-4 sm-4">
-            <img className="img-fluid img-thumbnail" src="/img/blog-sample.jpg" alt="" />
-            <Row>
-              <Col size="md-5">
-                <h4><strong>Title</strong></h4>
-              </Col>
-              <Col size="md-7">
-                <p>Date:<small> 09/23/2019</small> By <small>Ashkan</small></p>
-              </Col>
-            </Row>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-            <a className="text-center" href="#">Read More!</a>
-          </Col><Col size="md-4 sm-4">
-            <img className="img-fluid img-thumbnail" src="/img/blog-sample.jpg" alt="" />
-            <Row>
-              <Col size="md-5">
-                <h4><strong>Title</strong></h4>
-              </Col>
-              <Col size="md-7">
-                <p>Date:<small> 09/23/2019</small> By <small>Ashkan</small></p>
-              </Col>
-            </Row>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-            <a className="text-center" href="#">Read More!</a>
-          </Col><Col size="md-4 sm-4">
-            <img className="img-fluid img-thumbnail" src="/img/blog-sample.jpg" alt="" />
-            <Row>
-              <Col size="md-5">
-                <h4><strong>Title</strong></h4>
-              </Col>
-              <Col size="md-7">
-                <p>Date:<small> 09/23/2019</small> By <small>Ashkan</small></p>
-              </Col>
-            </Row>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-            <a className="text-center" href="#">Read More!</a>
-          </Col>
-        </Row>
-        <Row>
+
+          ) : (<h3></h3>)}
+        <Row> 
           <Col size="md-12">
             <p className="text-center moreBlogsButton">
-              <a href="#">Click Here to See More Blogs</a>
+              <a href="/blogs">Click Here to See More Blogs</a>
             </p>
           </Col>
         </Row>
@@ -160,20 +118,22 @@ render() {
                       <div className={"rowMarginSpace"}>
                       <Row>
                         <Col size={"md-3"}>
-                          <img className="img-thumbnail" src={singleNews.urlToImage} />
+                          <img className="img-thumbnail " src={singleNews.urlToImage} />
                         </Col>
                         <Col size={"md-9"}>
                            <p><strong>Title: </strong>{singleNews.title}</p>
                            <p><small>Author: {singleNews.author}</small></p>
                            <p><strong>Description: </strong>{singleNews.description}</p>
+                           <br />
                            <a target="_blank" href={singleNews.url} className="NewsReadMore">Read More...</a>
                         </Col>
                       </Row>
+                      <hr />
                       </div>
                       
                     ))}
                   </div>
-
+                  
                 ) : (
                     <h3></h3>
                   )} 

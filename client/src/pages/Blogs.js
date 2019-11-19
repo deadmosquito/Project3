@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import "./style.css"
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Moment from 'react-moment';
 
 class Blogs extends Component {
   state = {
@@ -63,20 +64,20 @@ class Blogs extends Component {
               {this.state.allBlogs.map(singleBlog => (
 
                 <Col size="md-4 sm-4">
-                  <img className="img-fluid img-thumbnail" src={singleBlog.image} alt="" />
+                  <img className="img-fluid img-thumbnail imageBlogsRes" src={singleBlog.image} alt="" />
                   <Col size="md-12">
                     <h6><strong>Title: </strong>{singleBlog.title}</h6>
                   </Col>
                   <Col size="md-12">
-                    <p><strong>Date:</strong><small>{singleBlog.createdAt}</small><strong> By </strong><small>{singleBlog.Author.fname}</small></p>
+                    <p><strong>Date:</strong><small>  <Moment format="MM/DD/YYYY HH:mm" date= {singleBlog.createdAt} /></small><strong> By </strong><small>{singleBlog.Author.fname}</small></p>
                   </Col>
                   <p>{singleBlog.description}</p>
-                  <Link className="text-center" to={"/blogs/" + singleBlog.id}>Read More!</Link>
+                  <Link className="text-center NewsReadMore" to={"/blogs/" + singleBlog.id}>Read More!</Link>
                 </Col>
               ))}
             </Row>
 
-          ) : (<h3>No Results to Display</h3>)}
+          ) : (<h3>Loading...</h3>)}
 
 
 

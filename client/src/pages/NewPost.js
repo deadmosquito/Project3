@@ -13,7 +13,6 @@ class NewPost extends Component {
     title: "",
     description: "",
     image: "",
-
     AuthorId: 0
   };
   componentDidMount() {
