@@ -1,0 +1,43 @@
+{
+  "name": "mern",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "predeploy": "npm run build",
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node server.js",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "client": "cd client && npm run start",
+    "install": "cd client && npm install",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run build"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^4.1.0",
+    "gh-pages": "^2.1.1",
+    "nodemon": "^1.18.7"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "bcrypt": "^3.0.6",
+    "body-parser": "^1.19.0",
+    "connect-session-sequelize": "^6.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.16.3",
+    "express-session": "^1.17.0",
+    "if-env": "^1.0.4",
+    "multer": "^1.4.2",
+    "mysql2": "^2.0.0",
+    "passport": "^0.4.0",
+    "passport-github2": "^0.1.11",
+    "passport-local": "^1.0.0",
+    "react-dom": "^16.12.0",
+    "save": "^2.4.0",
+    "save-file": "^2.3.1",
+    "sequelize": "^5.21.2"
+  }
+}
