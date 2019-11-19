@@ -85,7 +85,7 @@ class Profile extends Component {
     API.getAllSession()
       .then((res) => {
         if (!(res.data.isAuthorLoggin)) {
-          //toast.info("Please Try To Login... !");
+          //toast.info("Please login");
           this.props.history.push('/login', { some: 'state' })
         } else {
 
