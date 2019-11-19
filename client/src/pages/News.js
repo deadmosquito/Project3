@@ -28,7 +28,7 @@ class News extends Component {
   getAllBlogs = () => {
     API.getAllBlogs3()
       .then((res) => {
-        toast.info("Blogs are loading on sidebar... !");
+        toast.info("Loading sidebar blogs");
         console.log(res.data)
         this.setState({ allBlogs: res.data })
         console.log(this.state.allBlogs)
