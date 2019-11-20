@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import API from "../utils/API";
 import Nav from "../components/Nav";
 import NavLoginedIn from "../components/NavLoginedIn";
+import Categories from "../components/Categories";
 import { Col, Row, Container } from "../components/Grid";
 import { Link } from "react-router-dom";
 import "./style.css"
@@ -23,7 +24,7 @@ class Blogs extends Component {
   getAllBlogs = () => {
     API.getAllBlogs()
       .then((res) => {
-        toast.info("Blogs are loading... !");
+        toast.info("Loading Blogs... !");
         console.log(res.data)
         this.setState({ allBlogs: res.data })
         console.log(this.state.allBlogs)
@@ -58,7 +59,7 @@ class Blogs extends Component {
               <h3 style={{ paddingTop: '15px' }} className="text-center">Latest Blogs</h3>
             </Col>
           </Row>
-
+          <Categories />
           {this.state.allBlogs.length ? (
             <Row>
               {this.state.allBlogs.map(singleBlog => (

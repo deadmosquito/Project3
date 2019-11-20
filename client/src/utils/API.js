@@ -44,5 +44,8 @@ export default {
   },
   updateUserData:function(data){
     return axios.put("/api/profile", data)
+  },
+  loginGithub:function(){
+    return axios.get("/api/github")
   }
 };

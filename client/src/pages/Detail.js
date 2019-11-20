@@ -84,7 +84,7 @@ class Detail extends Component {
               <span> - </span>
               <span>
                 <strong>
-                  Create Date:
+                  Created Date:
                   
                    <Moment format="MM/DD/YYYY HH:mm" date= {this.state.blog.createdAt} />
                 
@@ -94,6 +94,7 @@ class Detail extends Component {
 
             <Col size="md-3">
               <div className="sidebar">
+              <h4>Lates News</h4>
                 {this.state.allNews.length ? (
                   <div>
 
@@ -101,8 +102,6 @@ class Detail extends Component {
                       <div className={"rowMarginSpace"}>
                         <Row>
                           <Col size="md-12">
-
-
                             <img className="img-thumbnail" src={singleNews.urlToImage} />
                             <p><strong>Title: </strong>{singleNews.title}</p>
                             <a target="_blank" href={singleNews.url} className="NewsReadMore">Read More...</a>

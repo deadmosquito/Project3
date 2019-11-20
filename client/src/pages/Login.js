@@ -40,7 +40,11 @@ class Login extends Component {
       [name]: value
     });
   };
-
+  loginGithub = ()=>{
+    API.loginGithub()
+    .then(result =>console.log(result))
+    .catch(err =>console.log(err))
+  }
   handleFormSubmit = event => {
     event.preventDefault();
     API.authorLogin({
@@ -54,7 +58,7 @@ class Login extends Component {
         toast.info("username or password is wrong... !");
 
       }else{
-        toast.info("you are redirecting to new post page... !");
+        toast.info("redirecting... !");
         this.props.history.push('/new-post', { some: 'state' })
         
       }
@@ -116,6 +120,7 @@ class Login extends Component {
               >
                 Login
               </FormBtn>
+              <a href="#" onClick={this.loginGithub} className="registrationLink">Login with GitHub</a>
               <a href="/registration" className="registrationLink">Registration</a>
             </form>
           </ColDark>

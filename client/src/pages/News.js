@@ -28,7 +28,7 @@ class News extends Component {
   getAllBlogs = () => {
     API.getAllBlogs3()
       .then((res) => {
-        toast.info("Blogs are loading on sidebar... !");
+        toast.info("Loading sidebar blogs... !");
         console.log(res.data)
         this.setState({ allBlogs: res.data })
         console.log(this.state.allBlogs)
@@ -75,7 +75,6 @@ class News extends Component {
               {/* <p>{this.state.newsArray.articles.title}</p> */}
               {this.state.allNews.length ? (
                  <div>
-
                     {this.state.allNews.map(singleNews => (
                       <div className={"rowMarginSpace"}>
                       <Row>
@@ -103,6 +102,7 @@ class News extends Component {
           </Col>
          <Col size="md-3">
          <div className="sidebar">
+           <h4>Latest Blogs</h4>
             {this.state.allBlogs.length ? (
                  <div>
 
@@ -110,7 +110,7 @@ class News extends Component {
                       <div className={"rowMarginSpace"}>
                       <Row>
                         <Col size="md-12">
-
+                        
 
                           <img className="img-thumbnail" src={singleBlog.image} />
                            <p><strong>Title: </strong>{singleBlog.title}</p>
