@@ -85,7 +85,7 @@ class Profile extends Component {
     API.getAllSession()
       .then((res) => {
         if (!(res.data.isAuthorLoggin)) {
-          //toast.info("Please Try To Login... !");
+          //toast.info("Please login");
           this.props.history.push('/login', { some: 'state' })
         } else {
 
@@ -111,11 +111,12 @@ class Profile extends Component {
             </Col>
           </Row>
 
-          <form>
+          <form className="profile-form">
             <Row>
-              <Col size="md-1"></Col>
-              <Col size="md-3">
+              <Col size="md-2"></Col>
+              <Col size="md-2">
                 <label>Profile Picture:</label>
+                <img className="img-thumbnail" src={this.state.profileURL} alt="profile-image"/>
               </Col>
               <Col size="md-3">
                 <label>First Name:</label>
@@ -160,7 +161,7 @@ class Profile extends Component {
                 onClick={this.handleFormSubmit}
               >
                 Update
-                            </FormBtn>
+              </FormBtn>
             </Col>
           </Row>
           <hr />

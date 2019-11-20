@@ -47,5 +47,8 @@ export default {
   },
   loginGithub:function(){
     return axios.get("/api/github")
+  },
+  like: function(blogId){
+    return axios.post("/api/like",blogId)
   }
 };
