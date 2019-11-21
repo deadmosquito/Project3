@@ -34,5 +34,18 @@ module.exports = {
         })
         .catch(err => res.status(422).json(err));
 
+    },
+    findAll: function(req, res) {
+      console.log(req.body)
+      db.Post
+      .findAll({where: {AuthorId: req.session.authorId}})
+ 
+      .then((dbModel => {
+        console.log("i am here")
+        console.log(dbModel)
+        res.json(dbModel)
+      }))
+      .catch(err => res.status(422).json(err));
     }
+  
 }
