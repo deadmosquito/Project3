@@ -58,8 +58,8 @@ class Login extends Component {
         toast.info("username or password is wrong");
 
       }else{
-        toast.info("redirecting to your new post");
-        this.props.history.push('/new-post', { some: 'state' })
+        toast.info("redirecting to your profile");
+        this.props.history.push('/profile', { some: 'state' })
         
       }
        

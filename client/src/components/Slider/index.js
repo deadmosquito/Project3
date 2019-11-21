@@ -15,15 +15,15 @@ function Slider() {
         
        
           <div className="item active">
-            <img src="https://images.unsplash.com/photo-1445280471656-618bf9abcfe0?crop=entropy&fit=crop&fm=jpg&h=400&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1400" alt="Chania"  width="100%" />
+            <img src="/img/slider1.jpg" alt="Chania"  width="100%" />
           </div>
           
             <div className="item ">
-            <img src="https://images.unsplash.com/photo-1419064642531-e575728395f2?crop=entropy&fit=crop&fm=jpg&h=400&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1400" alt="Chania"  width="100%" />
+            <img src="/img/slider2.jpg" alt="Chania"  width="100%" />
           </div>
       
           <div className="item">
-            <img src="https://images.unsplash.com/photo-1445280471656-618bf9abcfe0?crop=entropy&fit=crop&fm=jpg&h=400&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1400" alt="Flower" width="100%" />
+            <img src="/img/slider3.jpg" alt="Flower" width="100%" />
           </div>
       
         </div>
