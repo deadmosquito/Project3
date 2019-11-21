@@ -53,3 +53,7 @@
 .tobarCustomPadding{
     padding:0 !important;
 }
+
+.navbar {
+    position: sticky;
+}

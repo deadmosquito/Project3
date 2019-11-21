@@ -58,6 +58,10 @@
     color: white;
 }
 
+.navbar {
+    position: sticky;
+}
+
 
 
 
