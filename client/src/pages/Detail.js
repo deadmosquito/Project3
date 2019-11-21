@@ -28,14 +28,12 @@ class Detail extends Component {
     API.getNewsFive()
       .then((res) => {
         toast.info('Loading...')
-        console.log(res.data)
         this.setState({ allNews: res.data })
       }).catch(err => console.log(err));
   }
   getAllSessionForMenu = () => {
     API.getAllSessionForMenu()
       .then((res) => {
-        console.log(res)
         if (!(res.data.isAuthorLoggin)) {
 
           this.setState({
@@ -53,9 +51,15 @@ class Detail extends Component {
     API.getBlog(this.props.match.params.id)
       .then((res) => {
         this.setState({ blog: res.data, author: res.data.Author, category: res.data.Category })
-        console.log(this.state.blog)
       })
       .catch(err => console.log(err));
+  }
+  likeFunction = ()=>{
+    API.like({blogId: this.state.blog.id})
+    .then(res=>{
+      this.getSingleBlog()
+    })
+    .catch(err =>console.log(err))
   }
   render() {
     return (
@@ -79,12 +83,12 @@ class Detail extends Component {
                 </Col>
               </Row>
               <hr />
-              <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+              <a className="like" onClick={this.likeFunction}><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>{this.state.blog.likes}</a>
               <span><strong> Author: {this.state.author.fname}</strong></span>
               <span> - </span>
               <span>
                 <strong>
-                  Create Date:
+                  Created Date:
                   
                    <Moment format="MM/DD/YYYY HH:mm" date= {this.state.blog.createdAt} />
                 
@@ -94,6 +98,7 @@ class Detail extends Component {
 
             <Col size="md-3">
               <div className="sidebar">
+              <h4>Lates News</h4>
                 {this.state.allNews.length ? (
                   <div>
 
@@ -101,8 +106,6 @@ class Detail extends Component {
                       <div className={"rowMarginSpace"}>
                         <Row>
                           <Col size="md-12">
-
-
                             <img className="img-thumbnail" src={singleNews.urlToImage} />
                             <p><strong>Title: </strong>{singleNews.title}</p>
                             <a target="_blank" href={singleNews.url} className="NewsReadMore">Read More...</a>

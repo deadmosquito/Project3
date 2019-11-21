@@ -75,7 +75,6 @@ class News extends Component {
               {/* <p>{this.state.newsArray.articles.title}</p> */}
               {this.state.allNews.length ? (
                  <div>
-
                     {this.state.allNews.map(singleNews => (
                       <div className={"rowMarginSpace"}>
                       <Row>
@@ -103,6 +102,7 @@ class News extends Component {
           </Col>
          <Col size="md-3">
          <div className="sidebar">
+           <h4>Latest Blogs</h4>
             {this.state.allBlogs.length ? (
                  <div>
 
@@ -110,7 +110,7 @@ class News extends Component {
                       <div className={"rowMarginSpace"}>
                       <Row>
                         <Col size="md-12">
-
+                        
 
                           <img className="img-thumbnail" src={singleBlog.image} />
                            <p><strong>Title: </strong>{singleBlog.title}</p>

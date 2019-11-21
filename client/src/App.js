@@ -1,6 +1,6 @@
 import React from "react";
 import { ToastContainer } from "react-toastify";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route ,Switch} from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Registration from "./pages/Registration";
@@ -18,6 +18,7 @@ function App() {
     <div>
       
       <ToastContainer />
+      <Switch>
       <Route exact path="/" component={Home} />
       <Route exact path="/login" component={Login} />
       <Route exact path="/registration" component={Registration} />
@@ -26,6 +27,8 @@ function App() {
       <Route exact path="/blogs/:id" component={Detail} />
       <Route exact path="/new-post" component={NewPost} />
       <Route exact path="/profile" component={Profile} />
+      <Route component={NoMatch} />
+      </Switch>
       <Footer />
     </div>
 
