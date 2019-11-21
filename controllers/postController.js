@@ -46,7 +46,7 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   all: function(req, res){
-    db.Post.findAll({include: [db.Author,db.Category]})
+    db.Post.findAll({include: [db.Author,db.Category],where:{CategoryId:2}})
     .then((dbAll) =>{
       res.json(dbAll)
     })
