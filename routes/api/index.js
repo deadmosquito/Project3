@@ -10,6 +10,9 @@ const all3 = require("./all3")
 const blog = require("./blog")
 const profile = require("./profile");
 const newsfive = require("./newsfive")
+const github = require("./github")
+const like = require("./like")
+const userblog = require("./user-blog")
 ///////////////////////////////////////
 //////////////////////////////////////
 /////////////////////////////////////
@@ -24,5 +27,7 @@ router.use("/news", news)
 router.use("/logout", logout)
 router.use("/newsfive", newsfive)
 router.use("/profile", profile)
-
+router.use("/github", github)
+router.use("/like", like)
+router.use("/user-blog", userblog)
 module.exports = router;

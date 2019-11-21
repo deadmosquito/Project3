@@ -27,6 +27,7 @@ p,span,h1,h2,h3,h4,h5,h6,a{
     padding: 6px 12px;
     border-radius: 5px;
     margin-top: 0px;
+    margin-right: 10px;
     color: white;
     text-decoration: none;
     float: left;
@@ -65,7 +66,7 @@ p,span,h1,h2,h3,h4,h5,h6,a{
 }
 .imageBlogsRes{
     width: 400px;
-    height: 150px;
+    height: 170px;
 }
 .col-md-12 h6{
     margin-top:20px;
@@ -73,7 +74,7 @@ p,span,h1,h2,h3,h4,h5,h6,a{
 .fixedHeight{
     height: 160px;
 }
-.row,colgroup {
+.row,colgroup,.navbar,.footerCustom  {
 
     -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
        -moz-animation: fadein 2s; /* Firefox < 16 */
@@ -105,21 +106,6 @@ p,span,h1,h2,h3,h4,h5,h6,a{
     from { opacity: 0; }
     to   { opacity: 1; }
 }
-.category-menu li{
-    color: black;
-    font-size: 16px;
-    border: 1px solid black;
-    margin: 0 2px;
-    padding: 2px 7px;
-}
-.category-menu a{
-    color: black;
-}
-.category-menu li:hover{
-    background-color: gray;
-    color: white;
-}
-.category-menu a:hover{
-    text-decoration: none;
-    color: white;
+.like i:hover{
+    color:blue;
 }

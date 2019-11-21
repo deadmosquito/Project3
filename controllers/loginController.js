@@ -36,11 +36,15 @@ module.exports = {
       .catch(err => done(err));
   },
   github: (accessToken, refreshToken, profile, done) => {
+    console.log('im here')
     db.Author.findOne({ githubId: profile.id })
       .then(author => {
         if (!author) {
           db.Author.create({ githubId: profile.id, username: profile.username })
-            .then(newAuthor => done(null, newAuthor))
+            .then(newAuthor =>{
+              console.log(newAuthor)
+              done(null, newAuthor)
+            } )
             .catch(err => done(err));
         }
         done(null, author);

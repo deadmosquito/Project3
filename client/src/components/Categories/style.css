@@ -1,0 +1,18 @@
+.category-menu li{
+    color: black;
+    font-size: 16px;
+    border: 1px solid black;
+    margin: 0 2px;
+    padding: 2px 7px;
+}
+.category-menu a{
+    color: black;
+}
+.category-menu li:hover{
+    background-color: gray;
+    color: white;
+}
+.category-menu a:hover{
+    text-decoration: none;
+    color: white;
+}

@@ -2,10 +2,12 @@ import React, { Component } from "react";
 import API from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
 import { Input, FormBtn } from "../components/Form";
+import { Link } from "react-router-dom";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Nav from "../components/Nav";
 import NavLoginedIn from "../components/NavLoginedIn";
+import Moment from 'react-moment';
 
 class Profile extends Component {
 
@@ -17,14 +19,14 @@ class Profile extends Component {
     password: "",
     githubURL: "",
     profileURL: "",
-    id: ""
-
+    id: "",
+    blogById: []
   }
   componentDidMount() {
     this.getAllSessionForMenu();
     this.getUserData();
     this.checkSession();
-
+    this.getUserBlogs();
   }
   getAllSessionForMenu = () => {
     API.getAllSessionForMenu()
@@ -59,6 +61,18 @@ class Profile extends Component {
         console.log(this.state)
       })
   }
+
+  getUserBlogs = () => {
+    API.getUserBlogs()
+    .then((res) => {
+      console.log(res)
+      this.setState({ blogById: res.data })
+
+      console.log(this.state.blogById)
+    })
+  .catch(err => console.log(err))
+  }
+
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
@@ -106,7 +120,7 @@ class Profile extends Component {
             <Col size="md-12 sm-12">
               <Col size="md-12">
                 <h1 className="text-center">Profile</h1>
-                <h3 style={{ color: 'red' }}></h3>
+
               </Col>
             </Col>
           </Row>
@@ -115,7 +129,7 @@ class Profile extends Component {
             <Row>
               <Col size="md-2"></Col>
               <Col size="md-2">
-                <label>Profile Picture:</label>
+                <label style={{paddingBottom: '25px' }}>Profile Picture:</label>
                 <img className="img-thumbnail" src={this.state.profileURL} alt="profile-image"/>
               </Col>
               <Col size="md-3">
@@ -165,6 +179,32 @@ class Profile extends Component {
             </Col>
           </Row>
           <hr />
+          <Row>
+            <Col size="md-12">
+              <h3 style={{ paddingTop: '15px' }} className="text-center">All Posts</h3>
+            </Col>
+          </Row>
+          <div className="solo-blog">
+          {this.state.blogById.length ? (
+            <Row>
+              {this.state.blogById.map(singleBlog => (
+
+                <Col size="md-4 sm-4" key={singleBlog.id}>
+                  <img className="img-fluid img-thumbnail imageBlogsRes" src={singleBlog.image} alt="" />
+                  <Col size="md-12">
+                    <h4>{singleBlog.title}</h4>
+                  </Col>
+                  <Col size="md-12">
+                    <p><strong>Date:</strong><small>  <Moment format="MM/DD/YYYY HH:mm" date= {singleBlog.createdAt} /></small></p>
+                  </Col>
+                  <p>{singleBlog.description}</p>
+                  <Link className="text-center NewsReadMore" to={"/blogs/" + singleBlog.id}>Read More!</Link>
+                </Col>
+              ))}
+            </Row>
+
+          ) : (<h3>No Posts :(</h3>)}
+          </div>
         </Container>
       </div>
     );

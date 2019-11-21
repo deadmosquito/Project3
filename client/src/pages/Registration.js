@@ -34,8 +34,9 @@ class Registration extends Component {
     email: "",
     password: "",
     rPassword: "",
-    flagTrue:'',
-    flagFalse:""
+    flagTrue:"",
+    flagFalse:"",
+    profileURL:""
   };
 
   handleInputChange = event => {
@@ -43,17 +44,8 @@ class Registration extends Component {
     this.setState({
       [name]: value
     });
-    //this.checkPassword()
   };
-/* checkPassword = ()=>
-{
-  console.log(this.state.rPassword)
-  if(this.state.password === this.state.rPassword){
-    this.setState({flagTrue : 'MATCHED'})
-  }else{
-    this.setState({flagFalse :'NOT MATCHED'})
-  }
-} */
+
   resetFields = () => {
     this.setState({
       fname : "",
@@ -74,11 +66,12 @@ class Registration extends Component {
         fname: this.state.fname,
         lname: this.state.lname,
         email: this.state.email,
-        password: this.state.password
+        password: this.state.password,
+        profileURL: this.state.profileURL
       } )
         .then((result) =>{
           console.log(result)
-        toast.info("Thank you For registration. Please Try To Login... !");
+        toast.info("Your profile has been created, please login");
 
           this.props.history.push('/login', { some: 'state' })
 
@@ -89,16 +82,6 @@ class Registration extends Component {
     }else{
       this.setState({flagFalse :'NOT MATCHED',flagTrue:''})
     }
-    
- /*    API.authorRegister( {
-      fname: this.state.fname,
-      lname: this.state.lname,
-      email: this.state.email,
-      password: this.state.password
-    } )
-      .then((result) => console.log(result))
-      this.resetFields()
-      .catch(err => console.log(err)); */
   }
   
 
@@ -160,9 +143,17 @@ class Registration extends Component {
                 type="password"
                 placeholder="***** (required)"
               />
+              <label>Profile Picture URL:</label>
+              <Input
+                value={this.state.profileURL}
+                onChange={this.handleInputChange}
+                name="profileURL"
+                type="text"
+                placeholder="http://.... (required)"
+              />
               <hr />
               <FormBtn
-              disabled={!(this.state.fname && this.state.lname && this.state.email && this.state.password && this.state.rPassword)}
+              disabled={!(this.state.fname && this.state.lname && this.state.email && this.state.password && this.state.rPassword && this.state.profileURL)}
                 onClick={this.handleFormSubmit}
               >
                 Register

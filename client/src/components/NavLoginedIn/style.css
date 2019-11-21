@@ -5,14 +5,12 @@
     color: white !important;   
     font-weight: bold;
 }
-.navbar{
-    margin-bottom: 5px;
-}
+
 .nav-link:hover{
     color:lightblue !important;
 }
 .topbar{
-    margin:0 0 5px 0;
+    margin:0 0 0 0;
 }
 #category-nav a{
     font-size: 16px;

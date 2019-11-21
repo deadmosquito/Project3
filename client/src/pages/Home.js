@@ -31,7 +31,7 @@ class Blogs extends Component {
   getAllBlogs = () => {
     API.getAllBlogs3()
       .then((res) => {
-        toast.info("Blogs are loading... !");
+        toast.info("Loading Blogs... !");
         console.log(res.data)
         this.setState({ allBlogs: res.data })
         console.log(this.state.allBlogs)

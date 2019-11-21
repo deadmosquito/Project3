@@ -11,6 +11,12 @@ module.exports = function (sequelize, DataTypes) {
     },
     image: {
       type: DataTypes.STRING
+    },
+    sid:{
+      type: DataTypes.STRING
+    },
+    likes:{
+      type: DataTypes.INTEGER
     }
 
   });
