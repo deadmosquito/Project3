@@ -15,8 +15,8 @@ export default {
   getCategories: function(){
     return axios.get("/api/new-post")
   },
-  getNews: function(){
-    return axios.get("/api/news")
+  getNews: function(data){
+    return axios.post("/api/news",data)
   },
   getNewsFive:function(){
     return axios.get("/api/newsfive")
@@ -45,4 +45,8 @@ export default {
   updateUserData:function(data){
     return axios.put("/api/profile", data)
   }
+ /*  ,
+  newsCategoryT:function(data){
+    return axios.get("api/")
+  } */
 };

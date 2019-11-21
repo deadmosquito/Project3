@@ -26,7 +26,6 @@ module.exports = {
   all3: function(req, res){
     db.Post.findAll({include: [db.Author,db.Category],limit:3})
     .then((dbAll) =>{
-      console.log(dbAll)
       res.json(dbAll)
     })
     .catch(err =>res.status(422).json(err))

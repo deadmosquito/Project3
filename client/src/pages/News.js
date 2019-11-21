@@ -60,6 +60,61 @@ class News extends Component {
       }).catch(err => console.log(err));
   }
 
+  newsCategoryB = ()=>{
+   API.getNews({category:"business"})
+   .then(res=>
+    {
+      this.setState({allNews:[]})
+      this.setState({allNews:res.data})
+      console.log(res)
+    })
+
+   .catch(err=>console.log(err))
+  }
+  newsCategoryT = ()=>{
+   API.getNews({category:"technology"})
+   .then(res=>
+    {
+      this.setState({allNews:[]})
+      this.setState({allNews:res.data})
+      console.log(res)
+    })
+
+   .catch(err=>console.log(err))
+  }
+  newsCategoryE = ()=>{
+   API.getNews({category:"entertainment"})
+   .then(res=>
+    {
+      this.setState({allNews:[]})
+      this.setState({allNews:res.data})
+      console.log(res)
+    })
+
+   .catch(err=>console.log(err))
+  }
+  newsCategoryH = ()=>{
+   API.getNews({category:"health"})
+   .then(res=>
+    {
+      this.setState({allNews:[]})
+      this.setState({allNews:res.data})
+      console.log(res)
+    })
+
+   .catch(err=>console.log(err))
+  }
+  newsCategoryS = ()=>{
+   API.getNews({category:"sports"})
+   .then(res=>
+    {
+      this.setState({allNews:[]})
+      this.setState({allNews:res.data})
+      console.log(res)
+    })
+
+   .catch(err=>console.log(err))
+  }
   render() {
     return (
       <div>
@@ -71,6 +126,23 @@ class News extends Component {
           <Col size="md-9">
           <Col size="md-12 sm-12">
             <Col size="md-12">
+            <div className="row">
+            <div className="col-md-12 text-center">
+               {/*  <ul className="list-inline category-menu">
+                    <li><a href="">Technology</a></li>
+                    <li><a href="">Business</a></li>
+                    <li><a href="">Sports</a></li>
+                    <li><a href="">Enternaiment</a></li>
+                    <li><a href="">Health</a></li>
+                </ul> */}
+                <button value="Business" className="chooseCat" onClick={this.newsCategoryB} >Business</button>
+                <button value="Entertainment" className="chooseCat" onClick={this.newsCategoryE} >Entertainment</button>
+                <button value="Sports" className="chooseCat" onClick={this.newsCategoryS} >Sports</button>
+                <button value="Health" className="chooseCat" onClick={this.newsCategoryH} >Health</button>
+                <button value="Technology" className="chooseCat" onClick={this.newsCategoryT} >Technology</button>
+            </div>
+        </div>
+
               {/* <img src={this.state.newsArray.articles.urlToImage} /> */}
               {/* <p>{this.state.newsArray.articles.title}</p> */}
               {this.state.allNews.length ? (
