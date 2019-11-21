@@ -11,12 +11,13 @@ import News from "./pages/News";
 import NewPost from "./pages/NewPost";
 import NoMatch from "./pages/NoMatch";
 import Footer from "./components/Footer";
+import Topbar from "./components/Topbar";
 
 function App() {
   return (
     <Router>
     <div>
-      
+      <Topbar />
       <ToastContainer />
       <Switch>
       <Route exact path="/" component={Home} />

@@ -3,18 +3,8 @@ import "./style.css";
 
 function Nav() {
   return (
-    <div className="container-fluid tobarCustomPadding">
-        <div className="row bg-dark topbar">
-          <div className="col-md-6">
-          <a className="navbar-brand" href="/"> <i className="fas fa-poo-storm" aria-hidden="true"></i>  Project 3</a>
-          </div>
-          <div className="col-md-6 topBarIcons">
-            <span><a href="#"><i className="fas fa-search" aria-hidden="true">  </i></a></span>
-            <span><a href="#"><i className="far fa-bookmark" aria-hidden="true">  </i></a></span>
-            <span><a href="/login"><i className="fas fa-user-circle" aria-hidden="true"></i></a></span>
-          </div>
-        </div>
-        <nav className="navbar navbar-expand-lg sticky-top navbar-light bg-light bg-navBar">
+      <div className="navigation sticky-top">
+        <nav className="navbar navbar-expand-lg navbar-light bg-light bg-navBar">
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -32,11 +22,11 @@ function Nav() {
               <li class="nav-item">
                 <a class="nav-link" href="/login">Login/Resgister</a>
               </li>
-           
+
             </ul>
           </div>
         </nav>
-    </div>
+      </div>
   );
 }
 
