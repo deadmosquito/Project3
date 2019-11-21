@@ -132,6 +132,7 @@ class News extends Component {
                     <li><a href="">Enternaiment</a></li>
                     <li><a href="">Health</a></li>
                 </ul> */}
+                <button value="All" className="chooseCat" onClick={this.apiNewsCall} >All</button>
                 <button value="Business" className="chooseCat" onClick={this.newsCategoryB} >Business</button>
                 <button value="Entertainment" className="chooseCat" onClick={this.newsCategoryE} >Entertainment</button>
                 <button value="Sports" className="chooseCat" onClick={this.newsCategoryS} >Sports</button>
