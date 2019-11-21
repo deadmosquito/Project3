@@ -61,10 +61,13 @@ class Profile extends Component {
 
   getUserBlogs = () => {
     API.getUserBlogs()
-    .then((res) => {
-      this.setState({ blogById: res.data })
-    })
-  .catch(err => console.log(err))
+      .then((res) => {
+        console.log(res)
+        this.setState({ blogById: res.data })
+
+        console.log(this.state.blogById)
+      })
+      .catch(err => console.log(err))
   }
 
   handleInputChange = event => {
@@ -93,7 +96,6 @@ class Profile extends Component {
     API.getAllSession()
       .then((res) => {
         if (!(res.data.isAuthorLoggin)) {
-          //toast.info("Please Try To Login... !");
           this.props.history.push('/login', { some: 'state' })
         } else {
 
@@ -113,8 +115,7 @@ class Profile extends Component {
           <Row>
             <Col size="md-12 sm-12">
               <Col size="md-12">
-                <h1 className="text-center">Profile</h1>
-
+                <h1 className="text-center profile-header">Profile</h1>
               </Col>
             </Col>
           </Row>
@@ -123,8 +124,8 @@ class Profile extends Component {
             <Row>
               <Col size="md-2"></Col>
               <Col size="md-2">
-                <label style={{paddingBottom: '25px' }}>Profile Picture:</label>
-                <img className="img-thumbnail" src={this.state.profileURL} alt="profile-image"/>
+                <label>Profile Picture:</label>
+                <img className="img-thumbnail" src={this.state.profileURL} alt="profile-image" />
               </Col>
               <Col size="md-3">
                 <label>First Name:</label>
@@ -159,45 +160,47 @@ class Profile extends Component {
                   type="githubURL"
                   placeholder="github.com/johnwick"
                 />
+                <Row>
+                  <Col size="md-12">
+                    <div className="justify-content-end">
+                      <FormBtn
+                        onClick={this.handleFormSubmit}
+                      >
+                        Update
+                    </FormBtn>
+                    </div>
+                  </Col>
+                </Row>
               </Col>
               <Col size="md-2"></Col>
             </Row>
           </form>
-          <Row>
-            <Col size="md-12" className="justify-content-center">
-              <FormBtn
-                onClick={this.handleFormSubmit}
-              >
-                Update
-              </FormBtn>
-            </Col>
-          </Row>
           <hr />
           <Row>
             <Col size="md-12">
-              <h3 style={{ paddingTop: '15px' }} className="text-center">All Posts</h3>
+              <h3 style={{ paddingTop: '15px' }} className="text-center">Your Posts</h3>
             </Col>
           </Row>
           <div className="solo-blog">
-          {this.state.blogById.length ? (
-            <Row>
-              {this.state.blogById.map(singleBlog => (
+            {this.state.blogById.length ? (
+              <Row>
+                {this.state.blogById.map(singleBlog => (
 
-                <Col size="md-4 sm-4" key={singleBlog.id}>
-                  <img className="img-fluid img-thumbnail imageBlogsRes" src={singleBlog.image} alt="" />
-                  <Col size="md-12">
-                    <h4>{singleBlog.title}</h4>
+                  <Col size="md-4 sm-4" key={singleBlog.id}>
+                    <img className="img-fluid img-thumbnail imageBlogsRes" src={singleBlog.image} alt="" />
+                    <Col size="md-12">
+                      <h4>{singleBlog.title}</h4>
+                    </Col>
+                    <Col size="md-12">
+                      <p><strong>Date:</strong><small>  <Moment format="MM/DD/YYYY HH:mm" date={singleBlog.createdAt} /></small></p>
+                    </Col>
+                    <p className="fixedHeight">{singleBlog.description}</p>
+                    <Link className="text-center NewsReadMore" to={"/blogs/" + singleBlog.id}>Read More!</Link>
                   </Col>
-                  <Col size="md-12">
-                    <p><strong>Date:</strong><small>  <Moment format="MM/DD/YYYY HH:mm" date= {singleBlog.createdAt} /></small></p>
-                  </Col>
-                  <p>{singleBlog.description}</p>
-                  <Link className="text-center NewsReadMore" to={"/blogs/" + singleBlog.id}>Read More!</Link>
-                </Col>
-              ))}
-            </Row>
+                ))}
+              </Row>
 
-          ) : (<h3>No Posts :(</h3>)}
+            ) : (<h3>No Posts :(</h3>)}
           </div>
         </Container>
       </div>

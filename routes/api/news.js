@@ -3,6 +3,6 @@ const newsController = require("../../controllers/newsController");
 
 // Matches with "/api/new-post" 
 router.route("/")
-  .get(newsController.findAll) 
+  .post(newsController.findAll) 
 
 module.exports = router;

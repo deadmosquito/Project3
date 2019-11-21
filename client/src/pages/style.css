@@ -112,3 +112,17 @@ p,span,h1,h2,h3,h4,h5,h6,a{
 .like i:hover{
     color:blue;
 }
+
+.profile-header {
+    padding-bottom: 20px;
+}
+.chooseCat{
+    background-color: transparent;
+    margin:0 5px;
+    padding: 2px 7px;
+    border: 1px solid black;
+}
+.chooseCat:hover{
+    background-color: #343a40;
+    color: white;
+}

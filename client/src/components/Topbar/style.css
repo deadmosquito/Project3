@@ -1,14 +1,3 @@
-.bg-navBar{
-    background-color: black !important;
-}
-.bg-navBar a{
-    color: white !important;   
-    font-weight: bold;
-}
-
-.nav-link:hover{
-    color:lightblue !important;
-}
 .topbar{
     margin:0 0 0 0;
 }
@@ -52,8 +41,4 @@
 }
 .tobarCustomPadding{
     padding:0 !important;
-}
-
-.navbar {
-    position: sticky;
 }

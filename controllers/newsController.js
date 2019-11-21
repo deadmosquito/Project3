@@ -3,7 +3,11 @@ const apiKey = process.env.REACT_APP_NEWS_APIKEY
 
 module.exports = {
     findAll: function(req,res) {
-      axois.get("https://newsapi.org/v2/top-headlines?country=us"+apiKey)
+        let cat =req.body.category;
+        if(!(cat)){
+          cat = ""
+        }
+      axois.get("https://newsapi.org/v2/top-headlines?country=us"+apiKey+"&category="+cat)
       .then(function(result){
         res.json(result.data.articles)
       })
