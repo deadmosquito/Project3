@@ -50,5 +50,8 @@ export default {
   },
   like: function(blogId){
     return axios.post("/api/like",blogId)
+  },
+  getUserBlogs:function(){
+    return axios.get("/api/user-blog")
   }
 };
