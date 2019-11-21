@@ -25,15 +25,12 @@ class Blogs extends Component {
     API.getAllBlogs()
       .then((res) => {
         toast.info("Loading Blogs... !");
-        console.log(res.data)
         this.setState({ allBlogs: res.data })
-        console.log(this.state.allBlogs)
       }).catch(err => console.log(err))
   }
   getAllSessionForMenu = () => {
     API.getAllSessionForMenu()
       .then((res) => {
-        console.log(res)
         if (!(res.data.isAuthorLoggin)) {
 
           this.setState({
@@ -65,14 +62,16 @@ class Blogs extends Component {
               {this.state.allBlogs.map(singleBlog => (
 
                 <Col size="md-4 sm-4">
-                  <img className="img-fluid img-thumbnail imageBlogsRes" src={singleBlog.image} alt="" />
+                   <div style={{backgroundImage:`url(${singleBlog.image})`}} className="imageBlogsRes col-md-12">
+                    
+                    </div>  
                   <Col size="md-12">
                     <h6><strong>Title: </strong>{singleBlog.title}</h6>
                   </Col>
                   <Col size="md-12">
-                    <p><strong>Date:</strong><small>  <Moment format="MM/DD/YYYY HH:mm" date= {singleBlog.createdAt} /></small><strong> By </strong><small>{singleBlog.Author.fname}</small></p>
+                    <p><strong>Catergory: </strong><small>{singleBlog.Category.name}</small><strong> Date:</strong><small>  <Moment format="MM/DD/YYYY HH:mm" date= {singleBlog.createdAt} /></small><strong> By </strong><small>{singleBlog.Author.fname}</small></p>
                   </Col>
-                  <p>{singleBlog.description}</p>
+                  <p className="fixedHeight">{singleBlog.description}</p>
                   <Link className="text-center NewsReadMore" to={"/blogs/" + singleBlog.id}>Read More!</Link>
                 </Col>
               ))}

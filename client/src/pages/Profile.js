@@ -31,7 +31,6 @@ class Profile extends Component {
   getAllSessionForMenu = () => {
     API.getAllSessionForMenu()
       .then((res) => {
-        console.log(res)
         if (!(res.data.isAuthorLoggin)) {
 
           this.setState({
@@ -50,7 +49,6 @@ class Profile extends Component {
   getUserData = () => {
     API.getUserData()
       .then((res) => {
-        console.log(res)
         this.setState({
           fname: res.data.fname,
           lname: res.data.lname,
@@ -58,7 +56,6 @@ class Profile extends Component {
           profileURL: res.data.profileURL,
           githubURL: res.data.githubURL
         })
-        console.log(this.state)
       })
   }
 
@@ -99,7 +96,6 @@ class Profile extends Component {
     API.getAllSession()
       .then((res) => {
         if (!(res.data.isAuthorLoggin)) {
-          //toast.info("Please Try To Login... !");
           this.props.history.push('/login', { some: 'state' })
         } else {
 
@@ -182,7 +178,7 @@ class Profile extends Component {
           <hr />
           <Row>
             <Col size="md-12">
-              <h3 style={{ paddingTop: '15px' }} className="text-center">All Posts</h3>
+              <h3 style={{ paddingTop: '15px' }} className="text-center">Your Posts</h3>
             </Col>
           </Row>
           <div className="solo-blog">
@@ -198,7 +194,7 @@ class Profile extends Component {
                     <Col size="md-12">
                       <p><strong>Date:</strong><small>  <Moment format="MM/DD/YYYY HH:mm" date={singleBlog.createdAt} /></small></p>
                     </Col>
-                    <p>{singleBlog.description}</p>
+                    <p className="fixedHeight">{singleBlog.description}</p>
                     <Link className="text-center NewsReadMore" to={"/blogs/" + singleBlog.id}>Read More!</Link>
                   </Col>
                 ))}

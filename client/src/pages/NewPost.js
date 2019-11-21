@@ -26,9 +26,7 @@ class NewPost extends Component {
   getAllSessionForMenu = () => {
     API.getAllSessionForMenu()
       .then((res) => {
-        console.log(res)
         if (!(res.data.isAuthorLoggin)) {
-
           this.setState({
             menu: false
           })
@@ -45,7 +43,6 @@ class NewPost extends Component {
       .then((res) => {
 
         if (!(res.data.isAuthorLoggin)) {
-          //toast.info("Please Login");
           this.props.history.push('/login', { some: 'state' })
         } else {
 

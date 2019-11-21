@@ -29,15 +29,12 @@ class News extends Component {
     API.getAllBlogs3()
       .then((res) => {
         toast.info("Loading Sidebar Blogs...");
-        console.log(res.data)
         this.setState({ allBlogs: res.data })
-        console.log(this.state.allBlogs)
       }).catch(err => console.log(err))
   }
   getAllSessionForMenu = ()=>{
     API.getAllSessionForMenu()
     .then((res) =>{
-     console.log(res)
       if(!(res.data.isAuthorLoggin)){
       
         this.setState({
@@ -55,7 +52,6 @@ class News extends Component {
     API.getNews()
       .then((res) => {
         toast.info('Loading News...')
-        console.log(res.data)
         this.setState({allNews:res.data})
       }).catch(err => console.log(err));
   }
@@ -79,7 +75,6 @@ class News extends Component {
       toast.info('Loading Technology...')
       this.setState({allNews:[]})
       this.setState({allNews:res.data})
-      console.log(res)
     })
 
    .catch(err=>console.log(err))
@@ -91,7 +86,6 @@ class News extends Component {
       toast.info('Loading Entertainment...')
       this.setState({allNews:[]})
       this.setState({allNews:res.data})
-      console.log(res)
     })
 
    .catch(err=>console.log(err))
@@ -103,7 +97,6 @@ class News extends Component {
       toast.info('Loading Health...')
       this.setState({allNews:[]})
       this.setState({allNews:res.data})
-      console.log(res)
     })
 
    .catch(err=>console.log(err))
@@ -115,7 +108,6 @@ class News extends Component {
       toast.info('Loading Sports...')
       this.setState({allNews:[]})
       this.setState({allNews:res.data})
-      console.log(res)
     })
 
    .catch(err=>console.log(err))

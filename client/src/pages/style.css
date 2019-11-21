@@ -66,13 +66,16 @@ p,span,h1,h2,h3,h4,h5,h6,a{
 }
 .imageBlogsRes{
     width: 400px;
-    height: 170px;
+    height: 230px;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 .col-md-12 h6{
     margin-top:20px;
 }
 .fixedHeight{
-    height: 160px;
+    height: 110px;
 }
 .row,colgroup,.navbar,.footerCustom  {
 
