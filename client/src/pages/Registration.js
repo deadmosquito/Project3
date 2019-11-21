@@ -70,12 +70,9 @@ class Registration extends Component {
         profileURL: this.state.profileURL
       } )
         .then((result) =>{
-          console.log(result)
         toast.info("Your profile has been created, please login");
 
           this.props.history.push('/login', { some: 'state' })
-
-         // this.resetFields()
         })
         .catch(err => console.log(err));
 

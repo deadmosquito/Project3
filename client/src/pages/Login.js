@@ -15,9 +15,7 @@ class Login extends Component {
   getAllSessionForMenu = ()=>{
     API.getAllSessionForMenu()
     .then((res) =>{
-     console.log(res)
       if(!(res.data.isAuthorLoggin)){
-      
         this.setState({
          menu:false
         })
@@ -52,7 +50,6 @@ class Login extends Component {
       password: this.state.password
     })
       .then((result) =>{
-        console.log(result)
       if(!(result.data.isAuthorLoggin))
       {
         toast.info("username or password is wrong");

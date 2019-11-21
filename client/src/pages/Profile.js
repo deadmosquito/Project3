@@ -31,7 +31,6 @@ class Profile extends Component {
   getAllSessionForMenu = () => {
     API.getAllSessionForMenu()
       .then((res) => {
-        console.log(res)
         if (!(res.data.isAuthorLoggin)) {
 
           this.setState({
@@ -50,7 +49,6 @@ class Profile extends Component {
   getUserData = () => {
     API.getUserData()
       .then((res) => {
-        console.log(res)
         this.setState({
           fname: res.data.fname,
           lname: res.data.lname,
@@ -58,17 +56,13 @@ class Profile extends Component {
           profileURL: res.data.profileURL,
           githubURL: res.data.githubURL
         })
-        console.log(this.state)
       })
   }
 
   getUserBlogs = () => {
     API.getUserBlogs()
     .then((res) => {
-      console.log(res)
       this.setState({ blogById: res.data })
-
-      console.log(this.state.blogById)
     })
   .catch(err => console.log(err))
   }

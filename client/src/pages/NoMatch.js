@@ -14,7 +14,6 @@ class NoMatch extends Component {
   getAllSessionForMenu = () => {
     API.getAllSessionForMenu()
       .then((res) => {
-        console.log(res)
         if (!(res.data.isAuthorLoggin)) {
 
           this.setState({

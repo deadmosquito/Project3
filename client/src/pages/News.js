@@ -29,15 +29,12 @@ class News extends Component {
     API.getAllBlogs3()
       .then((res) => {
         toast.info("Loading sidebar blogs");
-        console.log(res.data)
         this.setState({ allBlogs: res.data })
-        console.log(this.state.allBlogs)
       }).catch(err => console.log(err))
   }
   getAllSessionForMenu = ()=>{
     API.getAllSessionForMenu()
     .then((res) =>{
-     console.log(res)
       if(!(res.data.isAuthorLoggin)){
       
         this.setState({

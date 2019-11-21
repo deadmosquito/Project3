@@ -3,7 +3,6 @@ const db = require("../models");
 
 module.exports = {
     findOne: function(req, res) {
-      console.log(req.session);
       if(req.session.isAuthorLoggin ===false){
         let data = {
           isSuccess: "No"
@@ -17,7 +16,6 @@ module.exports = {
         .catch(err => res.status(422).json(err));
     },
     update: function(req, res) { 
-      console.log(req.body)
       db.Author
       .update(
         {
@@ -36,13 +34,10 @@ module.exports = {
 
     },
     findAll: function(req, res) {
-      console.log(req.body)
       db.Post
       .findAll({where: {AuthorId: req.session.authorId}})
  
       .then((dbModel => {
-        console.log("i am here")
-        console.log(dbModel)
         res.json(dbModel)
       }))
       .catch(err => res.status(422).json(err));
