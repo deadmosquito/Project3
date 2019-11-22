@@ -24,11 +24,18 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   all3: function(req, res){
-    db.Post.findAll({include: [db.Author,db.Category],limit:3})
+    db.Post.findAll({include: [db.Author,db.Category],limit:3,order:[['id','DESC']]})
     .then((dbAll) =>{
       res.json(dbAll)
     })
     .catch(err =>res.status(422).json(err))
+  },
+  getAllCategories: function(req,res){
+    db.Category.findAll({})
+    .then(dbRes=>{
+      res.json(dbRes)
+    })
+    .catch(err=>console.log(err))
   },
   create: function(req, res) {
     db.Post
@@ -46,7 +53,18 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   all: function(req, res){
-    db.Post.findAll({include: [db.Author,db.Category],where:{CategoryId:2}})
+    let category = req.body.category;
+    db.Post.findAll({include: [db.Author,db.Category],order: [['id', 'DESC']]})
+    .then((dbAll) =>{
+      res.json(dbAll)
+    })
+    .catch(err =>res.status(422).json(err))
+  },
+  changedCat:function(req,res){
+    db.Post.findAll({include: [db.Author,db.Category]
+      ,where:{CategoryId:req.body.event}
+      ,order: [['id', 'DESC']]
+    })
     .then((dbAll) =>{
       res.json(dbAll)
     })
