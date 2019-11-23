@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import API from "../utils/API";
 import Nav from "../components/Nav";
 import NavLoginedIn from "../components/NavLoginedIn";
-import Categories from "../components/Categories";
 import { Col, Row, Container } from "../components/Grid";
 import { Link } from "react-router-dom";
 import "./style.css"
@@ -96,7 +95,7 @@ class Blogs extends Component {
                     
                     </div>  
                   <Col size="md-12">
-                    <h6 className="blog-title">{singleBlog.title}</h6>
+                    <h4 className="blog-title">{singleBlog.title}</h4>
                   </Col>
                   <Col size="md-12">
                     <p><strong>Catergory: </strong>

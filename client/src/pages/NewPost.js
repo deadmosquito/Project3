@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import API from "../utils/API";
-import { Col, Row, Container, ColDark, ColLight } from "../components/Grid";
-import { Input, FormBtn, SelectBox, TextArea } from "../components/Form";
-import axios from "axios";
+import { Col, Row, Container, ColLight } from "../components/Grid";
+import { Input, FormBtn } from "../components/Form";
 import Nav from "../components/Nav";
 import NavLoginedIn from "../components/NavLoginedIn";
 import { toast } from 'react-toastify';

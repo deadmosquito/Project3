@@ -80,7 +80,7 @@ render() {
                   </div>
 {/*                   <img className="img-fluid img-thumbnail imageBlogsRes" src={singleBlog.image} alt="" />
  */}                  <Col size="md-12">
-                    <h6 className="blog-title">{singleBlog.title}</h6>
+                    <h4 className="blog-title">{singleBlog.title}</h4>
                   </Col>
                   <Col size="md-12">
                     <p><strong>Date:</strong><small>  <Moment format="MM/DD/YYYY HH:mm" date= {singleBlog.createdAt} /></small><strong> By: </strong><small>{singleBlog.Author.fname}</small></p>
@@ -121,7 +121,7 @@ render() {
                         </Col>
                         <Col size={"md-9"}>
                            <p className="blog-title">{singleNews.title}</p>
-                           <p className="blog-author">Author: {singleNews.author}</p>
+                           <p className="blog-author"><strong>Author: {singleNews.author}</strong></p>
                            <p><strong>Description: </strong>{singleNews.description}</p>
                            <br />
                            <a target="_blank" href={singleNews.url} className="NewsReadMore">Read More...</a>

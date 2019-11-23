@@ -3,7 +3,6 @@ import API from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
 import { Input, FormBtn } from "../components/Form";
 import { Link } from "react-router-dom";
-import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Nav from "../components/Nav";
 import NavLoginedIn from "../components/NavLoginedIn";

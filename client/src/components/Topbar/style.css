@@ -1,3 +1,6 @@
+.navbar-brand {
+    color: black;
+}
 .topbar{
     margin:0 0 0 0;
 }
@@ -8,11 +11,12 @@
     border-radius: 0 !important;
 }
 .topBarIcons{
+    color: black;
     text-align: right;
     padding:15px 10px 0 0;
 }
 .topBarIcons i{
-    color:white;
+    color: black;
     margin-right: 10px;
     font-size: 16px;
 }
@@ -42,3 +46,4 @@
 .tobarCustomPadding{
     padding:0 !important;
 }
+
