@@ -3,7 +3,6 @@ import API from "../utils/API";
 import Nav from "../components/Nav";
 import NavLoginedIn from "../components/NavLoginedIn";
 import { Col, Row, Container } from "../components/Grid";
-import { Link } from "react-router-dom";
 import "./style.css"
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

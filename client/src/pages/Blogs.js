@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import API from "../utils/API";
 import Nav from "../components/Nav";
 import NavLoginedIn from "../components/NavLoginedIn";
-import Categories from "../components/Categories";
 import { Col, Row, Container } from "../components/Grid";
 import { Link } from "react-router-dom";
 import "./style.css"
@@ -96,10 +95,13 @@ class Blogs extends Component {
                     
                     </div>  
                   <Col size="md-12">
-                    <h6><strong>Title: </strong>{singleBlog.title}</h6>
+                    <h4 className="blog-title">{singleBlog.title}</h4>
                   </Col>
                   <Col size="md-12">
-                    <p><strong>Catergory: </strong><small>{singleBlog.Category.name}</small><strong> Date:</strong><small>  <Moment format="MM/DD/YYYY HH:mm" date= {singleBlog.createdAt} /></small><strong> By </strong><small>{singleBlog.Author.fname}</small></p>
+                    <p><strong>Catergory: </strong>
+                    <small>{singleBlog.Category.name}</small>
+                    <strong> Date:</strong><small>  <Moment format="MM/DD/YYYY HH:mm" date= {singleBlog.createdAt} /></small>
+                    <strong> By: </strong><small>{singleBlog.Author.fname}</small></p>
                   </Col>
                   <p className="fixedHeight">{singleBlog.description}</p>
                   <Link className="text-center NewsReadMore" to={"/blogs/" + singleBlog.id}>Read More!</Link>

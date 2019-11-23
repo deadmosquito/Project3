@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import API from "../utils/API";
-import { Col, Row, Container, ColDark } from "../components/Grid";
+import { Col, Row, Container } from "../components/Grid";
 import { toast } from "react-toastify"
 import { Link } from "react-router-dom";
 import { moment } from "moment";

@@ -19,7 +19,7 @@ function Nav() {
                 <a className="nav-link" href="/news">News</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/login">Login/Resgister</a>
+                <a class="nav-link" href="/login">Login/Register</a>
               </li>
             </ul>
           </div>

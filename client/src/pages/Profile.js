@@ -3,7 +3,6 @@ import API from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
 import { Input, FormBtn } from "../components/Form";
 import { Link } from "react-router-dom";
-import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Nav from "../components/Nav";
 import NavLoginedIn from "../components/NavLoginedIn";
@@ -183,7 +182,7 @@ class Profile extends Component {
                 {this.state.blogById.map(singleBlog => (
 
                   <Col size="md-4 sm-4" key={singleBlog.id}>
-                    <img className="img-fluid img-thumbnail imageBlogsRes" src={singleBlog.image} alt="" />
+                    <div style={{backgroundImage:`url(${singleBlog.image})`}} className="imageBlogsRes col-md-12"></div>
                     <Col size="md-12">
                       <h4>{singleBlog.title}</h4>
                     </Col>

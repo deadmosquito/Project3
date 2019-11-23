@@ -1,5 +1,12 @@
-p,span,h1,h2,h3,h4,h5,h6,a{
-    font-family: "Roboto";
+h1,h2,h3,h4,h5,h6,a{
+    font-family: 'Adamina', serif;
+}
+p,span{
+    font-family: 'Open Sans', sans-serif;
+}
+
+.navbar-brand {
+    font-family: 'Adamina', serif;
 }
 .moreBlogsButton{
     margin: 40px auto;
@@ -123,4 +130,12 @@ p,span,h1,h2,h3,h4,h5,h6,a{
 .chooseCat:hover{
     background-color: #343a40;
     color: white;
+}
+
+.blog-title {
+    font-size: 20px;
+}
+
+.spacer {
+    height: 180px;
 }

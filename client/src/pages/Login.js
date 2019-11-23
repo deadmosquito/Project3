@@ -123,6 +123,11 @@ class Login extends Component {
           </ColDark>
           <Col size="md-4"></Col>
         </Row>
+        <Row>
+          <Col size="md-12">
+            <div className="spacer"></div>
+          </Col>
+        </Row>
       </Container>
       </div>
     );
