@@ -13,6 +13,8 @@ const newsfive = require("./newsfive")
 const github = require("./github")
 const like = require("./like")
 const userblog = require("./user-blog")
+const allCat = require("./allCat")
+const changedCat = require("./changedCat")
 ///////////////////////////////////////
 //////////////////////////////////////
 /////////////////////////////////////
@@ -30,4 +32,6 @@ router.use("/profile", profile)
 router.use("/github", github)
 router.use("/like", like)
 router.use("/user-blog", userblog)
+router.use("/allCat", allCat)
+router.use("/changedCat",changedCat)
 module.exports = router;

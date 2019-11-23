@@ -53,9 +53,12 @@ export default {
   },
   getUserBlogs:function(){
     return axios.get("/api/user-blog")
+  },
+  getAllCategories:function(){
+    return axios.get("/api/allCat")
+  },
+  changeCat: function(id){
+    return axios.post("/api/changedCat",id)
   }
- /*  ,
-  newsCategoryT:function(data){
-    return axios.get("api/")
-  } */
+  
 };
