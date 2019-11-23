@@ -65,8 +65,6 @@ class NewPost extends Component {
   loadCategories = () => {
     API.getCategories()
       .then((res) => {
-
-        console.log(res)
         this.setState({ categories: res.data.dataCategory })
       }).catch(err => console.log(err));
   }
@@ -98,7 +96,6 @@ class NewPost extends Component {
   }
   handleFormSubmit = event => {
     event.preventDefault()
-    console.log(this.state)
     API.savePost({
       title: this.state.title,
       description: this.state.description,
@@ -109,7 +106,6 @@ class NewPost extends Component {
     })
       .then((result) => {
         toast.info("Your blog has been posted!");
-        console.log(result)
         this.resetFields()
       })
       .catch(err => console.log(err));

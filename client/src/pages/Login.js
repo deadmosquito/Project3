@@ -52,7 +52,7 @@ class Login extends Component {
       .then((result) =>{
       if(!(result.data.isAuthorLoggin))
       {
-        toast.info("username or password is wrong");
+        toast.error("username or password is wrong");
 
       }else{
         toast.info("redirecting to your profile");

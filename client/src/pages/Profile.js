@@ -62,10 +62,7 @@ class Profile extends Component {
   getUserBlogs = () => {
     API.getUserBlogs()
       .then((res) => {
-        console.log(res)
         this.setState({ blogById: res.data })
-
-        console.log(this.state.blogById)
       })
       .catch(err => console.log(err))
   }
@@ -79,7 +76,6 @@ class Profile extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault()
-    console.log(this.state)
     API.updateUserData({
       id: this.state.id,
       fname: this.state.fname,
