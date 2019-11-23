@@ -117,7 +117,14 @@ render() {
                       <div className={"rowMarginSpace"}>
                       <Row>
                         <Col size={"md-3"}>
-                          <img className="img-thumbnail " src={singleNews.urlToImage} />
+                        {(() => {
+                                switch (singleNews.urlToImage) {
+
+                                  case null: return <img className="img-thumbnail" src="img/video.png" />;
+                                  default: return <img className="img-thumbnail" src={singleNews.urlToImage} />;
+                                }
+                              })()}
+                              
                         </Col>
                         <Col size={"md-9"}>
                            <p><strong>Title: </strong>{singleNews.title}</p>

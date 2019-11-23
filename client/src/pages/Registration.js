@@ -14,7 +14,6 @@ class Registration extends Component {
   getAllSessionForMenu = () => {
     API.getAllSessionForMenu()
       .then((res) => {
-        console.log(res)
         if (!(res.data.isAuthorLoggin)) {
 
           this.setState({
@@ -74,7 +73,6 @@ class Registration extends Component {
           profileURL: this.state.profileURL
         })
           .then((result) => {
-            console.log(result.data.existed)
             if (result.data.existed === true) {
               toast.error("User already existed...!");
 
