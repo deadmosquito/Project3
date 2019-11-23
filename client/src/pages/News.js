@@ -17,9 +17,7 @@ class News extends Component {
       allNews: [],
       allBlogs: []
     }
-
   }
-
   componentDidMount() {
     this.apiNewsCall();
     this.getAllSessionForMenu();
@@ -55,7 +53,6 @@ class News extends Component {
         this.setState({ allNews: res.data })
       }).catch(err => console.log(err));
   }
-
   newsCategoryB = () => {
     API.getNews({ category: "business" })
       .then(res => {
@@ -63,7 +60,6 @@ class News extends Component {
         this.setState({ allNews: [] })
         this.setState({ allNews: res.data })
       })
-
       .catch(err => console.log(err))
   }
   newsCategoryT = () => {
@@ -73,7 +69,6 @@ class News extends Component {
         this.setState({ allNews: [] })
         this.setState({ allNews: res.data })
       })
-
       .catch(err => console.log(err))
   }
   newsCategoryE = () => {
@@ -93,7 +88,6 @@ class News extends Component {
         this.setState({ allNews: [] })
         this.setState({ allNews: res.data })
       })
-
       .catch(err => console.log(err))
   }
   newsCategoryS = () => {
@@ -103,7 +97,6 @@ class News extends Component {
         this.setState({ allNews: [] })
         this.setState({ allNews: res.data })
       })
-
       .catch(err => console.log(err))
   }
   render() {
@@ -119,13 +112,6 @@ class News extends Component {
                 <Col size="md-12">
                   <div className="row">
                     <div className="col-md-12 text-center">
-                      {/*  <ul className="list-inline category-menu">
-                    <li><a href="">Technology</a></li>
-                    <li><a href="">Business</a></li>
-                    <li><a href="">Sports</a></li>
-                    <li><a href="">Enternaiment</a></li>
-                    <li><a href="">Health</a></li>
-                </ul> */}
                       <button value="All" className="chooseCat" onClick={this.apiNewsCall} >All</button>
                       <button value="Business" className="chooseCat" onClick={this.newsCategoryB} >Business</button>
                       <button value="Entertainment" className="chooseCat" onClick={this.newsCategoryE} >Entertainment</button>
@@ -134,9 +120,6 @@ class News extends Component {
                       <button value="Technology" className="chooseCat" onClick={this.newsCategoryT} >Technology</button>
                     </div>
                   </div>
-
-                  {/* <img src={this.state.newsArray.articles.urlToImage} /> */}
-                  {/* <p>{this.state.newsArray.articles.title}</p> */}
                   {this.state.allNews.length ? (
                     <div>
                       {this.state.allNews.map(singleNews => (
@@ -145,12 +128,10 @@ class News extends Component {
                             <Col size={"md-3"}>
                               {(() => {
                                 switch (singleNews.urlToImage) {
-
                                   case null: return <img className="img-thumbnail" src="img/video.png" />;
                                   default: return <img className="img-thumbnail" src={singleNews.urlToImage} />;
                                 }
                               })()}
-                              
                             </Col>
                             <Col size={"md-9"}>
                               <p><strong>Title: </strong>{singleNews.title}</p>
@@ -161,10 +142,8 @@ class News extends Component {
                           </Row>
                           <hr />
                         </div>
-
                       ))}
                     </div>
-
                   ) : (
                       <h3></h3>
                     )}
@@ -176,7 +155,6 @@ class News extends Component {
                 <h4>Latest Blogs</h4>
                 {this.state.allBlogs.length ? (
                   <div>
-
                     {this.state.allBlogs.map(singleBlog => (
                       <div className={"rowMarginSpace"}>
                         <Row>
@@ -185,26 +163,20 @@ class News extends Component {
                             <p><strong>Title: </strong>{singleBlog.title}</p>
                             <Link className="text-center NewsReadMore" to={"/blogs/" + singleBlog.id}>Read More!</Link>
                           </Col>
-
                         </Row>
                         <hr className="divider" />
                       </div>
-
                     ))}
                   </div>
-
                 ) : (
                     <h3></h3>
                   )}
               </div>
-
             </Col>
-
           </Row>
         </Container>
       </div>
     )
-
   };
 }
 export default News;
