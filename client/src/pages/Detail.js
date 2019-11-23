@@ -105,7 +105,14 @@ class Detail extends Component {
                       <div className={"rowMarginSpace"}>
                         <Row>
                           <Col size="md-12">
-                            <img className="img-thumbnail" src={singleNews.urlToImage} />
+                          {(() => {
+                                switch (singleNews.urlToImage) {
+
+                                  case null: return <img className="img-thumbnail" src="img/video.png" />;
+                                  default: return <img className="img-thumbnail" src={singleNews.urlToImage} />;
+                                }
+                              })()}
+                              
                             <p><strong>Title: </strong>{singleNews.title}</p>
                             <a target="_blank" href={singleNews.url} className="NewsReadMore">Read More...</a>
                           </Col>
