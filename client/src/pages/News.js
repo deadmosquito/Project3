@@ -128,7 +128,7 @@ class News extends Component {
                             <Col size={"md-3"}>
                               {(() => {
                                 switch (singleNews.urlToImage) {
-                                  case null: return <img className="img-thumbnail" src="img/video.png" />;
+                                  case null: return <img className="img-thumbnail" src="/img/video.png" />;
                                   default: return <img className="img-thumbnail" src={singleNews.urlToImage} />;
                                 }
                               })()}
