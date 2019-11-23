@@ -80,13 +80,13 @@ render() {
                   </div>
 {/*                   <img className="img-fluid img-thumbnail imageBlogsRes" src={singleBlog.image} alt="" />
  */}                  <Col size="md-12">
-                    <h6><strong>Title: </strong>{singleBlog.title}</h6>
+                    <h6 className="blog-title">{singleBlog.title}</h6>
                   </Col>
                   <Col size="md-12">
-                    <p><strong>Date:</strong><small>  <Moment format="MM/DD/YYYY HH:mm" date= {singleBlog.createdAt} /></small><strong> By </strong><small>{singleBlog.Author.fname}</small></p>
+                    <p><strong>Date:</strong><small>  <Moment format="MM/DD/YYYY HH:mm" date= {singleBlog.createdAt} /></small><strong> By: </strong><small>{singleBlog.Author.fname}</small></p>
                   </Col>
                   <p className="fixedHeight">{singleBlog.description}</p>
-                  <Link className="text-center NewsReadMore" to={"/blogs/" + singleBlog.id}>Read More!</Link>
+                  <Link className="text-center NewsReadMore" to={"/blogs/" + singleBlog.id}>Read More...</Link>
                 </Col>
               ))}
             </Row>
@@ -120,8 +120,8 @@ render() {
                           <img className="img-thumbnail " src={singleNews.urlToImage} />
                         </Col>
                         <Col size={"md-9"}>
-                           <p><strong>Title: </strong>{singleNews.title}</p>
-                           <p><small>Author: {singleNews.author}</small></p>
+                           <p className="blog-title">{singleNews.title}</p>
+                           <p className="blog-author">Author: {singleNews.author}</p>
                            <p><strong>Description: </strong>{singleNews.description}</p>
                            <br />
                            <a target="_blank" href={singleNews.url} className="NewsReadMore">Read More...</a>

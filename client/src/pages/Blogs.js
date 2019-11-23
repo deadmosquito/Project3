@@ -66,10 +66,13 @@ class Blogs extends Component {
                     
                     </div>  
                   <Col size="md-12">
-                    <h6><strong>Title: </strong>{singleBlog.title}</h6>
+                    <h6 className="blog-title">{singleBlog.title}</h6>
                   </Col>
                   <Col size="md-12">
-                    <p><strong>Catergory: </strong><small>{singleBlog.Category.name}</small><strong> Date:</strong><small>  <Moment format="MM/DD/YYYY HH:mm" date= {singleBlog.createdAt} /></small><strong> By </strong><small>{singleBlog.Author.fname}</small></p>
+                    <p><strong>Catergory: </strong>
+                    <small>{singleBlog.Category.name}</small>
+                    <strong> Date:</strong><small>  <Moment format="MM/DD/YYYY HH:mm" date= {singleBlog.createdAt} /></small>
+                    <strong> By: </strong><small>{singleBlog.Author.fname}</small></p>
                   </Col>
                   <p className="fixedHeight">{singleBlog.description}</p>
                   <Link className="text-center NewsReadMore" to={"/blogs/" + singleBlog.id}>Read More!</Link>

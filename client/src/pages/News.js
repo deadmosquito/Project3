@@ -184,7 +184,7 @@ class News extends Component {
 
                           <img className="img-thumbnail" src={singleBlog.image} />
                            <p><strong>Title: </strong>{singleBlog.title}</p>
-                           <Link className="text-center NewsReadMore" to={"/blogs/" + singleBlog.id}>Read More!</Link>
+                           <Link className="text-center NewsReadMore" to={"/blogs/" + singleBlog.id}>Read More...</Link>
                         </Col>
 
                       </Row>
